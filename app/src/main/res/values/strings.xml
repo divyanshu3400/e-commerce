@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Fashion</string>
+    <string name="image">Image\n</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="welcome">Welcome</string>
+    <string name="please_login_to_continue_our_app">Please login to continue our app</string>
+    <string name="fashion">Fashion</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_password">Enter password</string>
+    <string name="cnf_password">Repeat password</string>
+    <string name="enter_username">Enter username</string>
+    <string name="my_life_my_style">My Life My Style</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="create_an_new_account">Create an new account</string>
+    <string name="by_creating_an_account_you_have_to_agree_with_our_terms_amp_conditions"><![CDATA[By creating an account you have to agree with our terms & Conditions]]></string>
+    <string name="create_account">Create Account</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="user_name">Divyanshu Kushwaha</string>
+    <string name="user_email">divyanshurock39@gmail.com</string>
+    <string name="items">items</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="great_deal">Great Deal</string>
+    <string name="my_cart">My Cart</string>
+</resources>

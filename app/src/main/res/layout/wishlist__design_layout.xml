@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="modal"
+            type="com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel" />
+
+        <variable
+            name="onClick"
+            type="com.cloudsect.myapplication.ui.wishlist.listeners.OnClickListener" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/camera_image"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/image"
+                app:product_image="@{modal.productImageUrl}"
+                />
+
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/margin_10"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Roller Rabbit"
+                    android:textSize="18sp"
+                    android:text="@{modal.productTitle}"
+                    />
+                <CheckBox
+                    android:id="@+id/starTask"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:button="@null"
+                    android:checked="true"
+                    android:background="@drawable/wishlist_check_box"
+                    app:layout_constraintEnd_toEndOf="@id/container"
+                    app:layout_constraintTop_toTopOf="@id/container"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Vado Odelle Dress"
+                android:textSize="14sp"
+                android:text="@{modal.productDesc}"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="$4500"
+                    android:text="@{modal.productPrice}"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/caprasimo_regular"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    android:text="Add To Cart"
+                    android:onClick="@{() -> onClick.getWishlistData(modal)}"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

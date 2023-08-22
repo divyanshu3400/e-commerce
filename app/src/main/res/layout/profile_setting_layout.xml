@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="listItem"
+            type="com.cloudsect.myapplication.ui.profile.ListItemModel" />
+
+        <variable
+            name="onClick"
+            type="com.cloudsect.myapplication.ui.profile.listeners.Listeners" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:id="@+id/parentLayout"
+        android:background="@drawable/ll_ripple_effect"
+        android:focusable="true"
+        android:onClick="@{() -> onClick.parentLayoutClicked(listItem)}"
+        android:layout_height="55dp">
+
+        <ImageView
+            android:padding="@dimen/margin_10"
+            android:layout_width="@dimen/icon_size_big"
+            android:layout_height="@dimen/icon_size_big"
+            android:src="@{listItem.iconRes}"
+            android:background="@drawable/add_square_svgrepo_com"
+            android:contentDescription="@string/title_profile"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@{listItem.title}"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:hint="@string/items"
+            android:paddingStart="@dimen/margin_10"
+            android:paddingEnd="@dimen/margin_10"
+            />
+
+        <ImageView
+            android:layout_width="@dimen/icon_size_small"
+            android:layout_height="@dimen/icon_size_small"
+            android:src="@drawable/ic_ios_back"
+            android:contentDescription="@string/title_profile"
+            android:layout_gravity="center|end"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

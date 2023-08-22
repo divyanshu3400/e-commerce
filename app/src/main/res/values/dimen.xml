@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="selected_slider_indicator_icon_size">10dp</dimen>
+    <dimen name="unselected_slider_indicator_icon_size">8dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="small_text_size">12sp</dimen>
+    <dimen name="icon_size_big">60dp</dimen>
+    <dimen name="icon_size_small">24dp</dimen>
+    <dimen name="button_height">50dp</dimen>
+    <dimen name="badge_text_size">10sp</dimen>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">Welcome</string>
+    <string name="by_creating_an_account_you_have_to_agree_with_our_terms_amp_conditions"><![CDATA[By creating an account you have to agree with our terms & Conditions]]></string>
+    <string name="wishlist">Wishlist</string>
+    <string name="great_deal">Great Deal</string>
+</resources>
