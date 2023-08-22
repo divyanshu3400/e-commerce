@@ -6,4 +6,6 @@
     <color name="yellow">#FFC107</color>
     <color name="primaryColor">#FF000000</color>
     <color name="lightPrimaryColor">#7F8BC34A</color>
+    <color name="colorPrimaryDark">#7F8BC34A</color>
+    <color name="colorAccent">#673AB7</color>
 </resources>

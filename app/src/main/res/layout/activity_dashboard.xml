@@ -51,14 +51,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:menu="@menu/bottom_nav_menu" />
 
-            <FrameLayout
-                android:id="@+id/badgeContainer1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|end">
-
-                <include layout="@layout/badge_layout" />
-            </FrameLayout>
 
             <fragment
                 android:id="@+id/nav_host_fragment_activity_dashboard"
