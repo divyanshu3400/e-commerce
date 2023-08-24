@@ -12,6 +12,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:id="@+id/parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.card.MaterialCardView
@@ -45,8 +46,8 @@
                     android:background="@drawable/wishlist_check_box"
                     app:layout_constraintEnd_toEndOf="@id/container"
                     app:layout_constraintTop_toTopOf="@id/container"
-                    android:layout_marginEnd="@dimen/margin_20"
-                    android:layout_marginTop="@dimen/margin_20"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

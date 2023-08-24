@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="sizes"
+            type="String" />
+    </data>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="40dp"
+        android:id="@+id/parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/selected_color_background"
+        android:gravity="center"
+        >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvChild"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:cardCornerRadius="@dimen/margin_20"
+            app:cardBackgroundColor="@color/black"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</layout>

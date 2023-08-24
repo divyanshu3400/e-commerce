@@ -67,6 +67,9 @@ dependencies {
 
     implementation ("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
 
 //    google json library
     implementation ("com.google.code.gson:gson:2.10.1")
@@ -80,5 +83,19 @@ dependencies {
 
 //  badge dependency
 //    implementation("com.nex3z:badger:1.1.0")
+
+    // retrofit
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+// GSON
+
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+// coroutine
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
 
 }

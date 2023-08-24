@@ -12,6 +12,16 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/navigation_category"
+        android:name="com.cloudsect.myapplication.ui.categories.CategoriesFragment"
+        android:label="@string/title_category"
+        tools:layout="@layout/fragment_categories" >
+        <action
+            android:id="@+id/action_navigation_category_to_gridProductListFragment"
+            app:destination="@id/gridProductListFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/navigation_cart"
         android:name="com.cloudsect.myapplication.ui.mycart.MyCartFragment"
         android:label="@string/title_cart"
@@ -27,6 +37,24 @@
         android:id="@+id/navigation_profile"
         android:name="com.cloudsect.myapplication.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_personalDetailFragment"
+            app:destination="@id/personalDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gridProductListFragment"
+        android:name="com.cloudsect.myapplication.ui.grid_product_list.GridProductListFragment"
+        android:label="fragment_grid_product_list"
+        tools:layout="@layout/fragment_grid_product_list" />
+    <fragment
+        android:id="@+id/personalDetailFragment"
+        android:name="com.cloudsect.myapplication.ui.personal_detail.PersonalDetailFragment"
+        android:label="fragment_personal_detail"
+        tools:layout="@layout/fragment_personal_detail" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.cloudsect.myapplication.ui.product_detail.ProductDetailsFragment"
+        android:label="ProductDetailsFragment" />
 
 </navigation>

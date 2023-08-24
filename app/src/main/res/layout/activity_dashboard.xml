@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -14,17 +15,53 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:navigationIcon="@drawable/menu"
             app:title=" ">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginEnd="55dp"
+                android:background="@drawable/search_background"
+                android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                <ImageView
+                    android:src="@drawable/search_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/margin_15"
+                    />
+
+
+                <AutoCompleteTextView
+                    style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
+                    android:id="@+id/autoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:paddingTop="10dp"
+                    android:paddingStart="@dimen/margin_15"
+                    android:paddingEnd="@dimen/margin_15"
+                    android:hint="@string/search_for_products"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <Button
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="@dimen/margin_10"
+                android:backgroundTint="@color/primaryColor"
+                android:gravity="center"
+                app:icon="@drawable/filter_icon"
                 android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/margin_20"
-                android:contentDescription="@string/title_profile"
-                android:scaleType="centerCrop"
-                android:src="@drawable/dk_image" />
+                app:iconTint="@color/white" />
+
+
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -32,7 +69,24 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/suggestionRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_40"
+            android:layout_marginEnd="@dimen/margin_40"
+            android:visibility="gone"
+            android:background="@drawable/search_rv_background"
+            android:layout_below="@id/autoCompleteTextView"
+            />
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="#6AAAAAAA"-->
+<!--            />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container"
@@ -45,6 +99,8 @@
                 android:layout_height="55dp"
                 android:background="@color/white"
                 app:itemIconTint="@color/black"
+                app:elevation="@dimen/margin_10"
+                android:elevation="@dimen/margin_10"
                 app:labelVisibilityMode="unlabeled"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +113,7 @@
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="55dp"
                 app:defaultNavHost="true"
                 app:layout_constraintBottom_toTopOf="@id/nav_view"
                 app:layout_constraintLeft_toLeftOf="parent"

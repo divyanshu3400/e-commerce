@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,23 +43,23 @@ class ProfileFragment : Fragment() {
         binding.recyclerView2.layoutManager = LinearLayoutManager(context)
 
         val itemList = mutableListOf(
-            ListItemModel(1,resources.getDrawable(R.drawable.ic_profile), "Personal Details"),
-            ListItemModel(2,resources.getDrawable(R.drawable.ic_myorders), "My Orders"),
-            ListItemModel(3,resources.getDrawable(R.drawable.ic_wishlist), "My Favorites"),
-            ListItemModel(4,resources.getDrawable(R.drawable.ic_shipping), "Shipping Address"),
-            ListItemModel(5,resources.getDrawable(R.drawable.ic_credit_card), "My Card"),
-            ListItemModel(6,resources.getDrawable(R.drawable.ic_settings), "Settings"),
+            ListItemModel(1, context?.let { ContextCompat.getDrawable(it,R.drawable.ic_person2) }, "Personal Details"),
+            ListItemModel(2,context?.let { ContextCompat.getDrawable(it,R.drawable.ic_myorders) }, "My Orders"),
+            ListItemModel(3,context?.let { ContextCompat.getDrawable(it,R.drawable.ic_wishlist) }, "My Favorites"),
+            ListItemModel(4,context?.let { ContextCompat.getDrawable(it,R.drawable.ic_shipping) }, "Shipping Address"),
+            ListItemModel(5,context?.let { ContextCompat.getDrawable(it,R.drawable.ic_credit_card) }, "My Card"),
+            ListItemModel(6,context?.let { ContextCompat.getDrawable(it,R.drawable.ic_settings) }, "Settings"),
         )
 
         val adapter = context?.let { SettingListRVAdapter(it, itemList) }
         binding.recyclerView.adapter = adapter
 
         val itemList2 = mutableListOf(
-            ListItemModel(7,resources.getDrawable(R.drawable.warning2), "FAQs"),
-            ListItemModel(8,resources.getDrawable(R.drawable.ic_privacy_policy), "Privacy Policy"),
-            ListItemModel(9,resources.getDrawable(R.drawable.ic_settings), "Terms & Conditions"),
-            ListItemModel(10,resources.getDrawable(R.drawable.ic_shipping), "About Us"),
-            ListItemModel(11,resources.getDrawable(R.drawable.ic_credit_card), "Contact Us"),
+            ListItemModel(7,context?.let { ContextCompat.getDrawable(it,R.drawable.warning2) }, "FAQs"),
+            ListItemModel(8,context?.let { ContextCompat.getDrawable(it,R.drawable.ic_privacy_policy) }, "Privacy Policy"),
+            ListItemModel(9,context?.let { ContextCompat.getDrawable(it,R.drawable.ic_settings) }, "Terms & Conditions"),
+            ListItemModel(10,context?.let { ContextCompat.getDrawable(it,R.drawable.ic_shipping) }, "About Us"),
+            ListItemModel(11,context?.let { ContextCompat.getDrawable(it,R.drawable.ic_credit_card) }, "Contact Us"),
         )
 
         val adapter2 = context?.let { SettingListRVAdapter(it, itemList2) }
@@ -69,7 +70,7 @@ class ProfileFragment : Fragment() {
     @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
         val userProfileModel = UserProfileModel()
         userProfileModel.userName = "Divyanshu Kumar Kushwaha"
         userProfileModel.userEmail = "nddictator@gmail.com"

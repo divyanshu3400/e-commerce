@@ -1,9 +1,12 @@
 package com.cloudsect.myapplication.ui.home.adapter
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.databinding.NewArrivalsLayoutBinding
 import com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel
 
@@ -32,6 +35,11 @@ class NewArrivalRVAdapter(private val context: Context,private val itemList: Lis
         fun bind(modal: WishlistProductModel){
             binding.modal=modal
             binding.executePendingBindings()
+            val bundle = Bundle()
+            bundle.putSerializable("product",modal)
+            binding.parent.setOnClickListener{
+                Navigation.findNavController(itemView).navigate(R.id.productDetailsFragment,bundle)
+            }
         }
 
     }

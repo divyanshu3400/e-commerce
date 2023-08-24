@@ -1,11 +1,14 @@
 package com.cloudsect.myapplication.ui.profile.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.databinding.ProfileSettingLayoutBinding
 import com.cloudsect.myapplication.ui.profile.ListItemModel
 import com.cloudsect.myapplication.ui.profile.listeners.Listeners
@@ -39,11 +42,18 @@ class SettingListRVAdapter(private val context: Context,private val itemList: Li
         }
 
         override fun parentLayoutClicked(listItemModel: ListItemModel) {
-            if (listItemModel.id==3){
+            if (listItemModel.id==1){
+                Navigation.findNavController(itemView).navigate(R.id.action_navigation_profile_to_personalDetailFragment)
+            }
+            else if (listItemModel.id==2){
                 val intent = Intent(context, WishlistActivity::class.java)
                 context.startActivity(intent)
             }
-            Toast.makeText(context,"Clicked: "+listItemModel.title,Toast.LENGTH_SHORT).show()
+            else if (listItemModel.id==3){
+                val intent = Intent(context, WishlistActivity::class.java)
+                context.startActivity(intent)
+            }
+//            Toast.makeText(context,"Clicked: "+listItemModel.title,Toast.LENGTH_SHORT).show()
         }
     }
 }

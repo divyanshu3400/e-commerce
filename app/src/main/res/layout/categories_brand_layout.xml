@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="brandModel"
+            type="com.cloudsect.myapplication.ui.home.BrandModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="70dp"
+        android:layout_height="110dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/parent"
+        android:layout_margin="@dimen/margin_10"
+        >
+
+        <ImageView
+            android:id="@+id/brandImageVIew"
+            android:layout_width="match_parent"
+            android:scaleType="fitCenter"
+            android:layout_height="70dp"
+            android:src="@drawable/nike_logo"
+            app:brand_image="@{brandModel.brandImage}"
+            />
+
+        <TextView
+            android:id="@+id/brandTitle"
+            android:layout_marginTop="@dimen/margin_10"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="@{brandModel.brandTitle}"
+            android:hint="Brand"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>
