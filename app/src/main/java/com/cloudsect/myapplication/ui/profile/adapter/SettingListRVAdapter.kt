@@ -6,6 +6,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.cloudsect.myapplication.R
@@ -42,18 +43,30 @@ class SettingListRVAdapter(private val context: Context,private val itemList: Li
         }
 
         override fun parentLayoutClicked(listItemModel: ListItemModel) {
-            if (listItemModel.id==1){
-                Navigation.findNavController(itemView).navigate(R.id.action_navigation_profile_to_personalDetailFragment)
+            val navOptions = NavOptions.Builder()
+                .setEnterAnim(android.R.animator.fade_in)
+                .setExitAnim(android.R.animator.fade_out)
+                .setPopEnterAnim(android.R.animator.fade_in)
+                .setPopExitAnim(android.R.animator.fade_out)
+                .build()
+            when (listItemModel.id) {
+                1 -> {
+                    Navigation.findNavController(itemView).navigate(R.id.personalDetailFragment,null, navOptions)
+                }
+
+                2 -> {
+                    Navigation.findNavController(itemView).navigate(R.id.action_navigation_profile_to_myOrdersFragment)
+                }
+
+                3 -> {
+                    val intent = Intent(context, WishlistActivity::class.java)
+                    context.startActivity(intent)
+                }
+
+                else -> {
+                    // Handle the default case or additional cases
+                }
             }
-            else if (listItemModel.id==2){
-                val intent = Intent(context, WishlistActivity::class.java)
-                context.startActivity(intent)
-            }
-            else if (listItemModel.id==3){
-                val intent = Intent(context, WishlistActivity::class.java)
-                context.startActivity(intent)
-            }
-//            Toast.makeText(context,"Clicked: "+listItemModel.title,Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.cloudsect.myapplication.R
@@ -33,14 +34,24 @@ class NewArrivalRVAdapter(private val context: Context,private val itemList: Lis
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(modal: WishlistProductModel){
-            binding.modal=modal
+            binding.modal = modal
             binding.executePendingBindings()
             val bundle = Bundle()
-            bundle.putSerializable("product",modal)
-            binding.parent.setOnClickListener{
-                Navigation.findNavController(itemView).navigate(R.id.productDetailsFragment,bundle)
+            bundle.putSerializable("product", modal)
+            binding.parent.setOnClickListener {
+                val navOptions = NavOptions.Builder()
+                    .setEnterAnim(android.R.animator.fade_in)
+                    .setExitAnim(android.R.animator.fade_out)
+                    .setPopEnterAnim(android.R.animator.fade_in)
+                    .setPopExitAnim(android.R.animator.fade_out)
+                    .build()
+
+                Navigation.findNavController(itemView).navigate(
+                    R.id.productDetailsFragment,
+                    bundle,
+                    navOptions
+                )
             }
         }
-
     }
 }

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="modal"
+            type="com.cloudsect.myapplication.ui.myorders.model.MyOrderModal" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_10"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="0dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3">
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/productImage"
+                    android:layout_width="130dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="0dp"
+                    android:adjustViewBounds="true"
+                    android:elevation="5dp"
+                    android:padding="4dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/camera_image"
+                    app:product_image="@{modal.productImageUrl}"
+                    app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
+                    />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_10"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Roller Rabbit"
+                        android:text="@{modal.productTitle}"
+                        android:textSize="18sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Vado Odelle Dress"
+                    android:text="@{modal.productSecTitle}"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/caprasimo_regular"
+                        android:hint="$4500"
+                        android:text="@{modal.productPrice}"
+                        android:textSize="16sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:ll_visibility="@{modal.productSizes}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text="Size: "
+                        android:textSize="16sp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/margin_10"
+                        app:cardCornerRadius="@dimen/margin_40"
+                        app:cardElevation="0dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/sizeTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/yellow"
+                            android:gravity="center"
+                            android:hint="M"
+                            android:text="@{modal.productSizes}"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="11sp" />
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text="Color: "
+                        android:textSize="16sp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvChild"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/margin_10"
+                        app:cardCornerRadius="@dimen/margin_20" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

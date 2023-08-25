@@ -10,7 +10,7 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="70dp"
-        android:layout_height="110dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         android:id="@+id/parent"

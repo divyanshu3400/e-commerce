@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="orderString"
+            type="String" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".ui.myorders.MyOrdersFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/cart"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/my_orders"
+                android:fontFamily="@font/caprasimo_regular"
+                android:textSize="20sp"
+                android:paddingStart="@dimen/margin_20"
+                android:paddingEnd="@dimen/margin_20"
+                />
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/orderRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/rbtOnGoing"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/rbt_height"
+                android:padding="8dp"
+                android:text="@string/on_going"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:background="@drawable/rbt_design"
+                android:textColor="@color/black"
+                android:layout_marginEnd="@dimen/margin_10"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rbtCompleted"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/rbt_height"
+                android:padding="8dp"
+                android:gravity="center"
+                android:text="@string/completed"
+                android:textColor="@color/black"
+                android:button="@null"
+                android:background="@drawable/rbt_design"
+                android:layout_marginEnd="@dimen/margin_10"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rbtCancelled"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/rbt_height"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:button="@null"
+                android:background="@drawable/rbt_design"
+                android:padding="8dp"
+                android:text="@string/cancelled"
+                android:textColor="@color/black"
+                />
+
+        </RadioGroup>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_20"
+            android:padding="16dp"
+            android:id="@+id/myOrdersRV"
+            />
+
+    </LinearLayout>
+
+</layout>

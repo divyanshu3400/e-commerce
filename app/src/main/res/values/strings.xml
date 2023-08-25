@@ -29,6 +29,7 @@
     <string name="wishlist">Wishlist</string>
     <string name="great_deal">Great Deal</string>
     <string name="my_cart">My Cart</string>
+    <string name="my_orders">My Orders</string>
     <string name="search_hint">search here</string>
     <string name="search_for_products">Search products…</string>
     <string name="male">Male</string>
@@ -42,4 +43,7 @@
     <string name="size">Size</string>
     <string name="color">Color</string>
     <string name="description">Description</string>
+    <string name="on_going">On going</string>
+    <string name="completed">Completed</string>
+    <string name="cancelled">Cancelled</string>
 </resources>

@@ -11,8 +11,8 @@ import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.databinding.FragmentProductDetailsBinding
 import com.cloudsect.myapplication.ui.product_detail.adapter.ColorAdapter
 import com.cloudsect.myapplication.ui.product_detail.adapter.SizeAdapter
-import com.cloudsect.myapplication.ui.product_detail.model.ColorModel
 import com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel
+import com.cloudsect.myapplication.util.Colors.Companion.getColorList
 import com.cloudsect.myapplication.util.ImageSliderString
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,13 +22,7 @@ class ProductDetailsFragment : Fragment(), SizeAdapter.OnItemListener, ColorAdap
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(
-            LayoutInflater.from(context),
-            R.layout.fragment_product_details,
-            container,
-            false
-        )
-
+        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.fragment_product_details, container, false)
         return binding.root
     }
 
@@ -44,7 +38,7 @@ class ProductDetailsFragment : Fragment(), SizeAdapter.OnItemListener, ColorAdap
         binding.sizeRecyclerView.adapter = sizeAdapter
 
         binding.colorRecyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        val coloAdapter = context?.let { ColorAdapter(it,getColorList(),this) }
+        val coloAdapter = context?.let { ColorAdapter(it, getColorList(),this) }
 
         binding.colorRecyclerView.adapter=coloAdapter
     }
@@ -63,15 +57,13 @@ class ProductDetailsFragment : Fragment(), SizeAdapter.OnItemListener, ColorAdap
 
     private fun getSizeList(): List<String> {
         return mutableListOf(
-            "M", "S", "XL", "XXL"
+            "S","M","L" ,"XL", "XXL",
         )
     }
 
     private fun setImageSlider() {
         val imageSlider =
             context?.let { ImageSliderString(it, binding.viewPager, binding.dotsLayout) }
-
-        // Example image URLs
         val imageUrls = arrayOf(
             "https://nurserynisarga.in/wp-content/uploads/2021/06/ruby.jpg",
             "https://nurserynisarga.in/wp-content/uploads/2019/09/1800-1600-1.jpg",
@@ -98,21 +90,6 @@ class ProductDetailsFragment : Fragment(), SizeAdapter.OnItemListener, ColorAdap
                 Snackbar.LENGTH_SHORT
             )
             .show()
-    }
-
-    private fun getColorList(): List<ColorModel> {
-        val colorModel = ColorModel()
-        colorModel.colorName = "black"
-        colorModel.colorHex = "#000000"
-
-        val colorModel1 = ColorModel()
-        colorModel1.colorName = "purple"
-        colorModel1.colorHex = "#673AB7"
-
-        val colorModel2 = ColorModel()
-        colorModel2.colorName = "red"
-        colorModel2.colorHex = "#F90707"
-        return mutableListOf(colorModel,colorModel1,colorModel2)
     }
 
 }

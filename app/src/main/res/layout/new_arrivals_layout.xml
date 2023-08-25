@@ -8,32 +8,30 @@
             name="modal"
             type="com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel" />
     </data>
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:id="@+id/parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_10"
-            android:layout_marginTop="@dimen/margin_10"
-            app:cardElevation="2dp"
-
             >
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:id="@+id/container"
-                android:layout_height="200dp">
-
-                <ImageView
+                android:layout_height="250dp">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/camera_image"
-                    android:contentDescription="@string/image"
-                    android:scaleType="centerCrop"
+                    app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
+                    android:elevation="5dp"
+                    android:padding="8dp"
                     app:product_image="@{modal.productImageUrl}"
                     />
 
@@ -52,7 +50,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,5 +96,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
         </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
 </layout>

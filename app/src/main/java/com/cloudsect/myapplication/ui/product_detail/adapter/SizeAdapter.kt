@@ -47,7 +47,7 @@ class SizeAdapter(private val context: Context,
                 )
             } else {
                 binding.sizeTV.setBackgroundColor(
-                    ContextCompat.getColor(context, R.color.yellow)
+                    ContextCompat.getColor(context, R.color.dark_gray)
                 )
             }
             binding.cv.setOnClickListener(this)

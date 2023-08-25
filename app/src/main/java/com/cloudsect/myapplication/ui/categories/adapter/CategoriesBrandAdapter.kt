@@ -19,7 +19,7 @@ class CategoriesBrandAdapter(
     private val onItemListener: OnItemListener
 ) : RecyclerView.Adapter<CategoriesBrandAdapter.BrandViewHolder>() {
 
-    private var selectedPosition: Int = RecyclerView.NO_POSITION
+    private var selectedPosition: Int = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BrandViewHolder {
         val binding = CategoriesBrandLayoutBinding.inflate(
@@ -51,6 +51,7 @@ class CategoriesBrandAdapter(
                     ContextCompat.getColor(context, R.color.yellow)
                 )
             } else {
+
                 binding.brandTitle.setTextColor(
                     ContextCompat.getColor(context, android.R.color.black)
                 )
