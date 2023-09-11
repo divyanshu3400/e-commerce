@@ -4,46 +4,37 @@
     <data>
         <variable
             name="modal"
-            type="com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel" />
+            type="com.cloudsect.myapplication.ui.addresses.model.AddressModel" />
 
         <variable
             name="onClick"
-            type="com.cloudsect.myapplication.ui.mycart.listener.Listener" />
+            type="com.cloudsect.myapplication.ui.addresses.listener.AddressListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_10"
+        android:layout_margin="7dp"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="0dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="150dp">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                >
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/productImage"
-                    android:layout_width="130dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="0dp"
-                    android:adjustViewBounds="true"
-                    android:elevation="5dp"
-                    android:padding="4dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/camera_image"
-                    app:product_image="@{modal.productImageUrl}"
-                    app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
-                    />
-
-
-            </androidx.cardview.widget.CardView>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/productImage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center|top"
+                android:layout_margin="0dp"
+                android:adjustViewBounds="true"
+                android:padding="4dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_home_black_24dp"
+                app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
+                />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -61,8 +52,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="Roller Rabbit"
-                        android:text="@{modal.productTitle}"
+                        android:hint="Home"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="@{modal.addressType}"
                         android:textSize="18sp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -70,26 +63,28 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Vado Odelle Dress"
-                    android:text="@{modal.productSecTitle}"
-                    android:textSize="14sp" />
+                    android:hint="Kajal Villa, Krishna Lok Nagar, Faizullahganj, Lucknow, 226020, India "
+                    android:text="@{modal.combinedAddress}"
+                    android:textSize="14sp"
+                    android:layout_marginTop="@dimen/margin_10"
+                    />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
+                    android:layout_marginTop="@dimen/margin_10"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginTop="@dimen/margin_10"
                         android:layout_weight="1"
-                        android:fontFamily="@font/caprasimo_regular"
-                        android:hint="$4500"
-                        android:text="@{modal.productPrice}"
-                        android:textSize="16sp" />
+                        android:hint="Phone Number: 95659017665"
+                        android:text="@{modal.phoneNumber}"
+                        android:textSize="16sp"
+                        />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -98,16 +93,29 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10"
                     android:orientation="horizontal"
-                    android:gravity="end">
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center">
+
+                    <Button
+                        style="@style/Widget.Material3.Button.ElevatedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="UPDATE"
+                        android:textColor="@color/black"
+                        app:iconTint="@color/white"
+                        android:layout_marginEnd="@dimen/margin_10"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:onClick="@{view -> onClick.updateAddress(modal)}"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
                     <Button
                         style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:backgroundTint="@color/black"
-                        android:text="Add To Cart"
-                        android:textColor="@color/white"
+                        android:text="DELETE"
+                        android:textColor="@color/red"
                         app:iconTint="@color/white"
+                        android:onClick="@{view -> onClick.deleteAddress(modal)}"
                         android:layout_marginEnd="@dimen/margin_10"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />

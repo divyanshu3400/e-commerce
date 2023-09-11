@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:id="@+id/parent"
+        android:background="@drawable/ll_ripple_effect"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -21,7 +22,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:id="@+id/container"
-                android:layout_height="250dp">
+                android:layout_height="200dp">
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_gravity="center"
                     android:layout_width="match_parent"

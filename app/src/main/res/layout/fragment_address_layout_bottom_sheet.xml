@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.addresses.AddressLayoutBottomSheet">
+
+    <Button
+        android:id="@+id/addAddressBtn"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_40"
+        android:layout_marginTop="@dimen/margin_30"
+        android:layout_marginEnd="@dimen/margin_40"
+        android:backgroundTint="@color/yellow"
+        android:text="Add Address Here"
+        android:textColor="@color/white"
+        app:iconTint="@color/white" />
+
+    <Button
+        android:id="@+id/useCurrentLocationBtn"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_40"
+        android:layout_marginTop="@dimen/margin_30"
+        android:layout_marginEnd="@dimen/margin_40"
+        android:layout_marginBottom="@dimen/margin_40"
+        android:backgroundTint="@color/black"
+        android:elevation="@dimen/margin_10"
+        android:text="Use My Current Location"
+        android:textColor="@color/yellow"
+        app:iconTint="@color/white" />
+</LinearLayout>

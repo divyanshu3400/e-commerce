@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="model"
@@ -12,33 +11,46 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:background="@color/alice_blue"
         tools:context=".ui.categories.CategoriesFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:background="#7CEFEDE3"
-            android:id="@+id/parentRV"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_weight="0.3"
             android:layout_height="match_parent"
-            android:weightSum="1"
-            />
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#94707070"
-            />
+            android:layout_margin="4dp"
+            app:cardCornerRadius="8dp"
+
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/parentRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                />
+
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+
             >
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/childRV"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="1"
-                />
+                android:layout_margin="4dp"
+                app:cardCornerRadius="7dp"
+                >
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/childRV"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"
+                    android:layout_height="match_parent"
+                    />
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.addresses.AddressFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/manage_address"
+            android:fontFamily="@font/caprasimo_regular"
+            android:textSize="18sp"
+            android:paddingStart="@dimen/margin_20"
+            android:paddingEnd="@dimen/margin_20"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/noaddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Addresses Found..."
+            android:paddingStart="@dimen/margin_20"
+            android:paddingEnd="@dimen/margin_20"
+            android:textSize="18sp"
+            android:layout_marginTop="@dimen/margin_20"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.mycart.MyCartFragment"
+            android:orientation="vertical"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recyclerView"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginEnd="@dimen/margin_10"
+                android:layout_marginStart="@dimen/margin_10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <Button
+                android:id="@+id/addAddressBtn"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save New Address"
+                android:layout_marginTop="@dimen/margin_10"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/yellow"
+                android:layout_marginStart="@dimen/margin_40"
+                app:iconTint="@color/white"
+                android:layout_marginEnd="@dimen/margin_40"
+                android:onClick="@{view -> onClick.updateAddress(modal)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerView"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="@dimen/margin_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@android:color/secondary_text_light"
+                    android:layout_gravity="start"
+                    android:gravity="center|start"
+                    android:textSize="14sp"
+                    android:text="Total Address ("/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@android:color/secondary_text_light"
+                    android:layout_gravity="start"
+                    android:gravity="center|start"
+                    android:textSize="14sp"
+                    android:text="3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@android:color/secondary_text_light"
+                    android:layout_gravity="start"
+                    android:gravity="center|start"
+                    android:textSize="14sp"
+                    android:text=")"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</LinearLayout>

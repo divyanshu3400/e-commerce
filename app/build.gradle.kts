@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -56,6 +57,7 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -97,5 +99,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+
+
+//  google location dependency
+    implementation("com.google.android.gms:play-services-location:18.0.0")
+
+//    zoomable image view dependency
+
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
 
 }

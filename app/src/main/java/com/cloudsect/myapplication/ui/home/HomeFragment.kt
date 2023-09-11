@@ -16,7 +16,6 @@ import com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel
 import com.cloudsect.myapplication.util.ImageSliderString
 
 class HomeFragment : Fragment() {
-
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -69,7 +68,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setImageSlider() {
-        val imageSlider = context?.let { ImageSliderString(it, binding.viewPager, binding.dotsLayout) }
+        val imageSlider = context?.let { ImageSliderString(it, binding.viewPager, binding.dotsLayout,true) }
 
         // Example image URLs
         val imageUrls = arrayOf(

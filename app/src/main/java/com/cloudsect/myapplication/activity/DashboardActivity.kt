@@ -1,10 +1,12 @@
 package com.cloudsect.myapplication.activity
 
+import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -48,6 +50,7 @@ class DashboardActivity : AppCompatActivity(),SuggestionAdapter.OnItemClickListe
         val navView: BottomNavigationView = binding.navView
         navController = findNavController(R.id.nav_host_fragment_activity_dashboard)
         setBadges(navView)
+
         navView.setupWithNavController(navController)
 
         suggestionDao = RoomDB.getInstance(applicationContext).suggestionDao()

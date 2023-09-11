@@ -1,11 +1,9 @@
 package com.cloudsect.myapplication.ui.profile.adapter
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +11,7 @@ import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.databinding.ProfileSettingLayoutBinding
 import com.cloudsect.myapplication.ui.profile.ListItemModel
 import com.cloudsect.myapplication.ui.profile.listeners.Listeners
-import com.cloudsect.myapplication.ui.wishlist.WishlistActivity
+import com.cloudsect.myapplication.ui.wishlist.WishlistFragment
 
 
 class SettingListRVAdapter(private val context: Context,private val itemList: List<ListItemModel>) :
@@ -50,18 +48,13 @@ class SettingListRVAdapter(private val context: Context,private val itemList: Li
                 .setPopExitAnim(android.R.animator.fade_out)
                 .build()
             when (listItemModel.id) {
-                1 -> {
-                    Navigation.findNavController(itemView).navigate(R.id.personalDetailFragment,null, navOptions)
-                }
+                1 -> { Navigation.findNavController(itemView).navigate(R.id.personalDetailFragment,null, navOptions) }
 
-                2 -> {
-                    Navigation.findNavController(itemView).navigate(R.id.action_navigation_profile_to_myOrdersFragment)
-                }
+                2 -> { Navigation.findNavController(itemView).navigate(R.id.action_navigation_profile_to_myOrdersFragment) }
 
-                3 -> {
-                    val intent = Intent(context, WishlistActivity::class.java)
-                    context.startActivity(intent)
-                }
+                3 -> { Navigation.findNavController(itemView).navigate(R.id.action_navigation_profile_to_wishlistFragment) }
+
+                4 -> { Navigation.findNavController(itemView).navigate(R.id.action_navigation_profile_to_addressFragment) }
 
                 else -> {
                     // Handle the default case or additional cases

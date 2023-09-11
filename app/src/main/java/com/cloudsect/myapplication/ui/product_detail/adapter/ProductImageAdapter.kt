@@ -1,4 +1,4 @@
-package com.cloudsect.myapplication.util
+package com.cloudsect.myapplication.ui.product_detail.adapter
 
 
 import android.content.Context
@@ -17,7 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.activity.ViewImageActivity
 
-class ImageSliderString(
+class ProductImageAdapter(
     private val context: Context,
     private val viewPager: ViewPager,
     private val dotsLayout: LinearLayout,
@@ -30,10 +30,6 @@ class ImageSliderString(
 
     private val slideInterval = 2000
     private val handler = Handler(Looper.getMainLooper())
-
-    fun createPagerAdapter(): PagerAdapter {
-        return ImageSliderAdapter(context, imageUrls ?: arrayOf())
-    }
 
     fun setImageUrls(imageUrls: Array<String>) {
         this.imageUrls = imageUrls
@@ -106,16 +102,9 @@ class ImageSliderString(
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val inflater = LayoutInflater.from(context)
-            val view = inflater.inflate(R.layout.slider_layout, container, false)
+            val view = inflater.inflate(R.layout.product_image_slide_layout, container, false)
 
             val imageView = view.findViewById<ImageView>(R.id.imageView)
-
-            imageView.setOnClickListener {
-                val intent = Intent(context,ViewImageActivity::class.java)
-                intent.putExtra("images",imageUrls)
-                context.startActivity(intent)
-
-            }
 
             //Picasso.get().load(imageUrls[position]).into(imageView)
             Glide.with(context)

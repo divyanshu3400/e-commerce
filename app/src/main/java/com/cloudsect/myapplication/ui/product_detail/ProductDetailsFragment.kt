@@ -63,7 +63,7 @@ class ProductDetailsFragment : Fragment(), SizeAdapter.OnItemListener, ColorAdap
 
     private fun setImageSlider() {
         val imageSlider =
-            context?.let { ImageSliderString(it, binding.viewPager, binding.dotsLayout) }
+            context?.let { ImageSliderString(it, binding.viewPager, binding.dotsLayout,false) }
         val imageUrls = arrayOf(
             "https://nurserynisarga.in/wp-content/uploads/2021/06/ruby.jpg",
             "https://nurserynisarga.in/wp-content/uploads/2019/09/1800-1600-1.jpg",

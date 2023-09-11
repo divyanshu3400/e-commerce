@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
@@ -23,7 +25,7 @@
                 android:paddingStart="@dimen/margin_20"
                 android:paddingEnd="@dimen/margin_20"
                 android:text="@string/welcome"
-                android:textSize="28sp" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,7 +44,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp">
+                        android:layout_height="170dp">
 
                         <androidx.viewpager.widget.ViewPager
                             android:id="@+id/viewPager"
@@ -88,7 +90,7 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_10">
+                    >
 
                     <TextView
                         android:layout_width="0dp"
@@ -97,7 +99,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/caprasimo_regular"
                         android:text="Brands"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -132,7 +134,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/caprasimo_regular"
                         android:text="New Arrivals"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"

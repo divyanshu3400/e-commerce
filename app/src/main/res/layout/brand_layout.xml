@@ -9,9 +9,8 @@
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/brand_background"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:layout_margin="@dimen/margin_10"
         >

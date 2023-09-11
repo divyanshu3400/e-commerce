@@ -82,13 +82,31 @@
             app:popEnterAnim="@android:animator/fade_in"
             app:popExitAnim="@android:animator/fade_out"
             />
+        <action
+            android:id="@+id/action_navigation_profile_to_wishlistFragment"
+            app:destination="@id/wishlistFragment"
+            app:enterAnim="@android:animator/fade_in"
+            app:exitAnim="@android:animator/fade_out"
+            app:popEnterAnim="@android:animator/fade_in"
+            app:popExitAnim="@android:animator/fade_out"
+            />
+        <action
+            android:id="@+id/action_navigation_profile_to_addressFragment"
+            app:destination="@id/addressFragment"
+            app:enterAnim="@android:animator/fade_in"
+            app:exitAnim="@android:animator/fade_out"
+            app:popEnterAnim="@android:animator/fade_in"
+            app:popExitAnim="@android:animator/fade_out"
+            />
     </fragment>
+
     <fragment
         android:id="@+id/gridProductListFragment"
         android:name="com.cloudsect.myapplication.ui.grid_product_list.GridProductListFragment"
-        android:label="fragment_grid_product_list"
+        android:label="Product List"
         tools:layout="@layout/fragment_grid_product_list" >
     </fragment>
+
     <fragment
         android:id="@+id/personalDetailFragment"
         android:name="com.cloudsect.myapplication.ui.personal_detail.PersonalDetailFragment"
@@ -97,11 +115,40 @@
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.cloudsect.myapplication.ui.product_detail.ProductDetailsFragment"
-        android:label="ProductDetailsFragment" />
+        android:label="Product Details" />
     <fragment
         android:id="@+id/myOrdersFragment"
         android:name="com.cloudsect.myapplication.ui.myorders.MyOrdersFragment"
-        android:label="fragment_my_orders"
+        android:label="My Orders"
         tools:layout="@layout/fragment_my_orders" />
+    <fragment
+        android:id="@+id/wishlistFragment"
+        android:name="com.cloudsect.myapplication.ui.wishlist.WishlistFragment"
+        android:label="Wishlist" />
+    <fragment
+        android:id="@+id/addressMapsFragment"
+        android:name="com.cloudsect.myapplication.ui.addresses.AddressMapsFragment"
+        android:label="fragment_address_maps"
+        tools:layout="@layout/fragment_address_maps" />
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.cloudsect.myapplication.ui.addresses.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" />
+    <fragment
+        android:id="@+id/addressLayoutBottomSheet"
+        android:name="com.cloudsect.myapplication.ui.addresses.AddressLayoutBottomSheet"
+        android:label="fragment_address_layout_bottom_sheet"
+        tools:layout="@layout/fragment_address_layout_bottom_sheet" >
+        <action
+            android:id="@+id/action_addressLayoutBottomSheet_to_addressMapsFragment"
+            app:destination="@id/addressMapsFragment"
+            app:enterAnim="@android:animator/fade_in"
+            app:exitAnim="@android:animator/fade_out"
+            app:popEnterAnim="@android:animator/fade_in"
+            app:popExitAnim="@android:animator/fade_out"
+
+            />
+    </fragment>
 
 </navigation>

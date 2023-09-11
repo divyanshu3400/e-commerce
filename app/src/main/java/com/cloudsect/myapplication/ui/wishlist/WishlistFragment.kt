@@ -1,31 +1,36 @@
 package com.cloudsect.myapplication.ui.wishlist
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cloudsect.myapplication.R
-import com.cloudsect.myapplication.databinding.ActivityWishlistBinding
+import com.cloudsect.myapplication.databinding.FragmentWishlistBinding
 import com.cloudsect.myapplication.ui.wishlist.adapter.ProductRVAdapter
 import com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel
 
-class WishlistActivity : AppCompatActivity() {
+class WishlistFragment : Fragment() {
 
-    private lateinit var  binding : ActivityWishlistBinding
-    val context:Context =this
+    private lateinit var  binding : FragmentWishlistBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_wishlist)
-        setContentView(binding.root)
-
-        setWishlistAdapter()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.fragment_wishlist, container, false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setWishlistAdapter()
+    }
     private fun setWishlistAdapter() {
         binding.recyclerView.layoutManager=LinearLayoutManager(context)
-        val adapter = ProductRVAdapter(context,getProductList())
+        val adapter = context?.let { ProductRVAdapter(it,getProductList()) }
         binding.recyclerView.adapter = adapter
     }
 
