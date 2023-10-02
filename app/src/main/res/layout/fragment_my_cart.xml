@@ -9,9 +9,9 @@
             type="String" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
+        android:background="?android:windowBackground"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -101,6 +101,7 @@
                 android:id="@+id/cvCheckout">
 
                 <LinearLayout
+                    android:id="@+id/checkOutLL"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@color/black"
@@ -114,6 +115,7 @@
                         android:gravity="center|start"
                         android:textSize="18sp"
                         android:paddingStart="@dimen/margin_20"
+                        android:paddingEnd="@dimen/margin_10"
                         android:text="Proceed To Checkout"/>
 
                     <ImageView
@@ -122,6 +124,7 @@
                         android:layout_height="match_parent"
                         android:src="@drawable/checkout_arrow"
                         android:layout_marginEnd="@dimen/margin_20"
+                        android:contentDescription="@string/image"
                         />
                 </LinearLayout>
 
@@ -129,6 +132,16 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:id="@+id/llDialog"
+            >
+            <include layout="@layout/success_dialog_design"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

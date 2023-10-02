@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/background"
     android:layout_height="match_parent"
     >
 
@@ -10,20 +11,19 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@android:color/transparent"
+        android:background="?android:windowBackground"
         >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
             app:title=" ">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="55dp"
+                android:layout_marginEnd="@dimen/margin_20"
                 android:background="@drawable/search_background"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -45,6 +45,7 @@
                     android:imeOptions="actionSearch"
                     android:inputType="text"
                     android:maxLines="1"
+                    android:textSize="15sp"
                     android:paddingStart="@dimen/margin_15"
                     android:paddingTop="10dp"
                     android:paddingEnd="@dimen/margin_15" />
@@ -52,17 +53,18 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-            <Button
-                style="@style/Widget.Material3.Button.IconButton"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/margin_10"
-                android:backgroundTint="@color/primaryColor"
-                android:gravity="center"
-                app:icon="@drawable/filter_icon"
-                app:iconTint="@color/white" />
 
+<!--            <Button-->
+<!--                style="@style/Widget.Material3.Button.ElevatedButton.Icon"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:backgroundTint="@color/button_bg_color"-->
+<!--                app:icon="@drawable/filter_icon"-->
+<!--                app:iconTint="@color/button_text_color"-->
+<!--                android:layout_marginEnd="@dimen/margin_10"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent" />-->
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -74,15 +76,6 @@
         android:orientation="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/suggestionRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/autoCompleteTextView"
-            android:layout_marginStart="@dimen/margin_40"
-            android:layout_marginEnd="@dimen/margin_40"
-            android:background="@drawable/search_rv_background"
-            android:visibility="gone" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container"
@@ -93,13 +86,12 @@
                 android:id="@+id/nav_view"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/bottom_nav_background"
                 app:itemIconSize="@dimen/margin_30"
-                app:labelVisibilityMode="labeled"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 style="@style/AppBottomNavigationView"
+                android:background="@color/bottom_bar_bg_color"
                 app:menu="@menu/bottom_nav_menu" />
 
 
@@ -121,5 +113,22 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <LinearLayout
+        android:id="@+id/backgroundLl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:visibility="gone"
+        android:alpha="0.3"
+        android:orientation="horizontal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/suggestionRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_rv_background"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

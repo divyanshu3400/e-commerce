@@ -1,6 +1,9 @@
 package com.cloudsect.myapplication.ui.mycart
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +11,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cloudsect.myapplication.R
+import com.cloudsect.myapplication.activity.OnboardingActivity
 import com.cloudsect.myapplication.databinding.FragmentHomeBinding
 import com.cloudsect.myapplication.databinding.FragmentMyCartBinding
 import com.cloudsect.myapplication.ui.mycart.listener.Listener
@@ -28,6 +32,13 @@ class MyCartFragment : Fragment(),Listener  {
         _binding = FragmentMyCartBinding.inflate(LayoutInflater.from(context),container,false)
 
         setWishlistAdapter()
+
+        binding.checkOutLL.setOnClickListener { binding.llDialog.visibility = View.VISIBLE }
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.llDialog.visibility = View.GONE
+        }, (2 * 1000).toLong())
+
 
         return binding.root
     }

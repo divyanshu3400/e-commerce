@@ -8,36 +8,47 @@
             type="com.cloudsect.myapplication.ui.home.BrandModel" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="70dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:id="@+id/parent"
-        android:layout_margin="@dimen/margin_10"
+        android:layout_marginStart="@dimen/margin_10"
+        app:cardElevation="0dp"
+        android:layout_marginTop="@dimen/margin_10"
+        app:cardCornerRadius="@dimen/margin_10"
         >
-
-        <ImageView
-            android:id="@+id/brandImageVIew"
-            android:layout_width="match_parent"
-            android:scaleType="fitCenter"
-            android:layout_height="70dp"
-            android:src="@drawable/nike_logo"
-            app:brand_image="@{brandModel.brandImage}"
-            />
-
-        <TextView
-            android:id="@+id/brandTitle"
-            android:layout_marginTop="@dimen/margin_10"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:text="@{brandModel.brandTitle}"
-            android:hint="Brand"
-            />
+            android:orientation="vertical"
+            android:id="@+id/parent"
+            android:padding="6dp"
+            android:background="@drawable/ll_ripple_effect"
+            >
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <ImageView
+                android:id="@+id/brandImageVIew"
+                android:layout_width="match_parent"
+                android:scaleType="fitCenter"
+                android:layout_height="70dp"
+                android:src="@drawable/nike_logo"
+                app:brand_image="@{brandModel.brandImage}"
+                />
+
+            <TextView
+                android:id="@+id/brandTitle"
+                android:layout_marginTop="@dimen/margin_10"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:text="@{brandModel.brandTitle}"
+                android:hint="Brand"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
 
 </layout>

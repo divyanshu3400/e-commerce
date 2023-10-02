@@ -47,14 +47,15 @@ class CategoriesBrandAdapter(
             adapterPos=position
             binding.brandModel = brandModel
             if (selectedPosition == position) {
-                binding.brandTitle.setTextColor(
-                    ContextCompat.getColor(context, R.color.yellow)
-                )
+                binding.brandTitle.setTextColor(ContextCompat.getColor(context, R.color.yellow))
+                binding.parent.setBackgroundColor(ContextCompat.getColor(context, R.color.forest_green))
             } else {
 
                 binding.brandTitle.setTextColor(
                     ContextCompat.getColor(context, android.R.color.black)
                 )
+                binding.parent.setBackgroundColor(ContextCompat.getColor(context,android.R.color.transparent))
+
             }
             loadImage(binding.brandImageVIew, brandModel.brandImage)
             binding.executePendingBindings()

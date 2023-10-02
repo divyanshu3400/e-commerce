@@ -104,9 +104,5 @@ dependencies {
 //  google location dependency
     implementation("com.google.android.gms:play-services-location:18.0.0")
 
-//    zoomable image view dependency
-
-    implementation("com.github.chrisbanes:PhotoView:2.3.0")
-
 
 }

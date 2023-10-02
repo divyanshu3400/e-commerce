@@ -5,197 +5,194 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="viewModal"
-            type="com.cloudsect.myapplication.view_model.LoginViewModel" />
 
         <variable
             name="getCredential"
             type="com.cloudsect.myapplication.click_listener.GetLoginCredential" />
     </data>
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".activity.SignupActivity">
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
+            android:layout_height="match_parent"
+            android:id="@+id/container"
+            android:orientation="vertical">
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_40"
+                android:fontFamily="@font/dancing_script_regular"
+                android:gravity="center"
+                android:paddingStart="@dimen/margin_20"
+                android:paddingEnd="@dimen/margin_20"
+                android:text="@string/fashion"
+                android:id="@+id/fashionTv"
+                android:textSize="94sp"
+                app:layout_constraintStart_toStartOf="@id/container"
+                app:layout_constraintEnd_toEndOf="@id/container"
+                app:layout_constraintTop_toTopOf="@id/container"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:fontFamily="@font/caprasimo_regular"
+                android:gravity="center"
+                android:paddingStart="@dimen/margin_20"
+                android:paddingEnd="@dimen/margin_20"
+                android:text="@string/my_life_my_style"
+                android:textColor="@color/yellow"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/fashionTv"
+                app:layout_constraintTop_toBottomOf="@id/fashionTv"
+                app:layout_constraintEnd_toEndOf="@id/fashionTv"
+                android:id="@+id/styleTv"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/caprasimo_regular"
+                android:paddingStart="@dimen/margin_20"
+                android:paddingEnd="@dimen/margin_20"
+                android:text="@string/welcome"
+                android:textSize="34sp"
+                app:layout_constraintTop_toBottomOf="@id/styleTv"
+                app:layout_constraintStart_toStartOf="@id/container"
+                app:layout_constraintEnd_toEndOf="@id/container"
+                app:layout_constraintBottom_toBottomOf="@id/container"
+                app:layout_constraintVertical_bias="0.1"
+                android:id="@+id/welcomeTv"
+                />
+
+            <TextView
+                android:id="@+id/accTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/niconne_regular"
+                android:paddingStart="@dimen/margin_20"
+                android:paddingEnd="@dimen/margin_20"
+                android:text="@string/create_an_new_account"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/welcomeTv"
+                app:layout_constraintStart_toStartOf="@id/welcomeTv"
+                app:layout_constraintEnd_toEndOf="@id/welcomeTv"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginEnd="@dimen/margin_20"
+                android:hint="@string/enter_email"
+                android:id="@+id/emailTextInp"
+                app:layout_constraintTop_toBottomOf="@id/accTv"
+                app:layout_constraintStart_toStartOf="@id/container"
+                app:layout_constraintEnd_toEndOf="@id/container"
+                style="@style/CustomTextInputLayout"
                 >
-                <TextView
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/margin_20"
-                    android:paddingEnd="@dimen/margin_20"
-                    android:layout_marginTop="@dimen/margin_40"
-                    android:text="@string/fashion"
-                    android:gravity="center"
-                    android:fontFamily="@font/dancing_script_regular"
-                    android:textColor="@color/black"
-                    android:textSize="94sp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/margin_20"
-                    android:paddingEnd="@dimen/margin_20"
-                    android:text="@string/my_life_my_style"
-                    android:gravity="center"
-                    android:layout_marginBottom="@dimen/margin_10"
-                    android:fontFamily="@font/caprasimo_regular"
-                    android:textColor="@color/yellow"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/margin_20"
-                    android:paddingEnd="@dimen/margin_20"
-                    android:text="@string/welcome"
-                    android:fontFamily="@font/caprasimo_regular"
-                    android:textColor="@color/black"
-                    android:textSize="34sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/margin_20"
-                    android:paddingEnd="@dimen/margin_20"
-                    android:text="@string/create_an_new_account"
-                    android:fontFamily="@font/niconne_regular"
-                    android:textSize="18sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_20"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:layout_marginEnd="@dimen/margin_20"
-                    android:hint="@string/enter_email">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textEmailAddress"
-                        android:text="@{viewModal.email}"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_20"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:layout_marginEnd="@dimen/margin_20"
-                    android:hint="@string/enter_email">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textEmailAddress"
-                        android:text="@{viewModal.email}"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_20"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:layout_marginEnd="@dimen/margin_20"
-                    android:hint="@string/enter_password"
-                    app:passwordToggleEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textPassword"
-                        android:text="@{viewModal.password}"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_20"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:layout_marginEnd="@dimen/margin_20"
-                    android:hint="@string/cnf_password"
-                    app:passwordToggleEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textPassword"
-                        android:text="@{viewModal.password}"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_20"
-                    android:layout_marginEnd="@dimen/margin_20"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:textColor="@android:color/secondary_text_light"
-                    android:text="@string/by_creating_an_account_you_have_to_agree_with_our_terms_amp_conditions"
+                    android:layout_height="match_parent"
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/emailEt"
                     />
 
-<!--                <Button-->
-<!--                    android:id="@+id/btnLogin"-->
-<!--                    style="@style/Widget.Material3.Button"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="@dimen/button_height"-->
-<!--                    android:layout_marginStart="@dimen/margin_40"-->
-<!--                    android:layout_marginEnd="@dimen/margin_40"-->
-<!--                    android:layout_marginTop="@dimen/margin_20"-->
-<!--                    android:gravity="center"-->
-<!--                    android:clickable="true"-->
-<!--                    android:onClick="@{view -> getCredential.getLoginCredential(view,viewModal)}"-->
-<!--                    android:focusable="true"-->
-<!--                    android:text="@string/create_account" />-->
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginEnd="@dimen/margin_20"
+                android:hint="@string/enter_otp"
+                android:id="@+id/otpTextInp"
+                app:layout_constraintTop_toBottomOf="@id/emailTextInp"
+                app:layout_constraintStart_toStartOf="@id/emailTextInp"
+                app:layout_constraintEnd_toEndOf="@id/emailTextInp"
+                app:layout_constraintBottom_toTopOf="@id/requestOtp"
+                app:layout_constraintVertical_bias="0.3"
+                android:visibility="gone"
+                style="@style/CustomTextInputLayout"
+                >
 
-                <Button
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llTimer"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/otpTextInp"
+                app:layout_constraintStart_toStartOf="@id/container"
+                app:layout_constraintEnd_toEndOf="@id/container"
+                android:layout_marginTop="@dimen/margin_10"
+                android:paddingStart="@dimen/margin_10"
+                android:paddingEnd="@dimen/margin_10"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
                     android:layout_height="wrap_content"
-                    android:text="@string/create_account"
-                    android:layout_marginStart="@dimen/margin_20"
-                    android:layout_marginEnd="@dimen/margin_20"
+                    android:text="@string/resend_otp_in"
+                    android:paddingStart="@dimen/margin_30"
+                    android:paddingEnd="1dp"
                     />
 
-                <LinearLayout
-                    android:id="@+id/ll_login"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_marginTop="@dimen/margin_20"
-                    android:layout_height="wrap_content">
+                    android:text="30 Sec"
+                    />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/login"
-                        android:textSize="16sp"
-                        />
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/baseline_arrow_right_alt_24"
-                        />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/requestOtp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginStart="@dimen/margin_40"
+                android:layout_marginTop="@dimen/margin_20"
+                android:layout_marginEnd="@dimen/margin_40"
+                android:backgroundTint="@color/button_bg_color"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/request_otp"
+                android:textColor="@color/button_text_color"
+                android:textSize="14sp"
+                android:onClick="@{(view)-> getCredential.getLoginCredential(view)}"
+                app:layout_constraintBottom_toBottomOf="@id/container"
+                app:layout_constraintEnd_toEndOf="@id/container"
+                app:layout_constraintStart_toStartOf="@id/container"
+                android:layout_marginBottom="@dimen/margin_40"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include layout="@layout/loader"
+            android:id="@+id/loader"
+            android:visibility="gone"
+            />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

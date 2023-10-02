@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bottom_bar_icon_size">100dp</dimen>
+    <dimen name="heading_text_size">40sp</dimen>
+    <dimen name="subheading_text_size">36sp</dimen>
+    <dimen name="subheading_text_size_2">32sp</dimen>
+    <dimen name="desc_text_size">28sp</dimen>
+
+</resources>

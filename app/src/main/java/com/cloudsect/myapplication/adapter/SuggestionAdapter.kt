@@ -33,7 +33,7 @@ class SuggestionAdapter(private var suggestions: List<SuggestionEntity>, private
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(itemView: View, private val onItemListener: SuggestionAdapter.OnItemClickListener) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View, private val onItemListener: OnItemClickListener) : RecyclerView.ViewHolder(itemView) {
         private val suggestionTextView: TextView = itemView.findViewById(R.id.suggestionTextView)
 
         fun bind(suggestion: SuggestionEntity) {

@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.click_listener.GetLoginCredential
 import com.cloudsect.myapplication.databinding.ActivityLoginBinding
+import com.cloudsect.myapplication.models.UserEmailRequest
 import com.cloudsect.myapplication.view_model.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -33,10 +34,11 @@ class LoginActivity : AppCompatActivity(), GetLoginCredential {
 
     }
 
-    override fun getLoginCredential(view: View, viewModal: LoginViewModel) {
+
+    override fun getLoginCredential(view: View, userEmailRequest: UserEmailRequest) {
         Snackbar
             .make(
-                view, "Logged in as " + viewModal.email,
+                view, "Logged in as " + userEmailRequest.email,
                 Snackbar.LENGTH_SHORT
             )
             .show()
@@ -44,6 +46,5 @@ class LoginActivity : AppCompatActivity(), GetLoginCredential {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
             finish()
-        }, (1000).toLong())
-    }
+        }, (1000).toLong())    }
 }

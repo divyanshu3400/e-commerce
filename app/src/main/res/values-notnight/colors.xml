@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_main_1">#4D71FF</color>
+    <color name="color_bg_1">#FFFFFF</color>
+    <color name="color_text_0">#101214</color>
+    <color name="radio_bg_color">#1F000000</color>
+    <color name="button_bg_color">#000000</color>
+    <color name="button_text_color">#FFFFFF</color>
+    <color name="bottom_bar_text_color">#230129</color>
+    <color name="bottom_bar_bg_color">#F8EFFA</color>
+    <color name="btn_success">#2E8B57</color>
+    <color name="btn_blue">#0A3E89</color>
+    <color name="btn_warning">#F90707</color>
+    <color name="btn_yellow">#E0A62E</color>
+
+
+    <color name="color_light">#E0A62E</color>
+    <color name="color_custom">#FFEBE0</color>
+    <color name="background">#E9F7F5F1</color>
+
+    <color name="white">#fff</color>
+
+    <color name="yellow">#FF9800</color>
+
+    <color name="red">#F90707</color>
+    <color name="dark_gray">#373737</color>
+
+</resources>

@@ -47,7 +47,7 @@ class SearchDialogFragment(private val context: Context) : DialogFragment() {
 
 
         suggestionDao = RoomDB.getInstance(context).suggestionDao()
-        apiService = RetrofitClient.create(ApiService::class.java)
+        apiService = RetrofitClient.apiService
 
         searchRepository = SearchRepository(suggestionDao, apiService)
         viewModel = SearchViewModel(searchRepository)

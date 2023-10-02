@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.databinding.FragmentCategoriesBinding
 import com.cloudsect.myapplication.ui.categories.adapter.CategoriesBrandAdapter
 import com.cloudsect.myapplication.ui.categories.adapter.ChildCategoriesBrandAdapter
 import com.cloudsect.myapplication.util.CategoryLists.Companion.getChildCategory
 import com.cloudsect.myapplication.util.CategoryLists.Companion.getParentCategory
+import com.cloudsect.myapplication.util.WindowsUtil
 import com.google.android.material.snackbar.Snackbar
 
 class CategoriesFragment : Fragment(),
@@ -35,7 +37,11 @@ class CategoriesFragment : Fragment(),
     }
 
     private fun setBrandAdapter() {
-        binding.parentRV.layoutManager = LinearLayoutManager(context,
+        val column = if (context?.let { WindowsUtil.isTablet(it) } == true){
+            2
+        } else{ 1 }
+
+        binding.parentRV.layoutManager = GridLayoutManager(context,column,
             LinearLayoutManager.VERTICAL,false)
         val adapter = context?.let { CategoriesBrandAdapter(it,getParentCategory(),this) }
         binding.parentRV.adapter=adapter
@@ -46,7 +52,11 @@ class CategoriesFragment : Fragment(),
     }
 
     private fun updateChildRV(adapterPos: Int, view: View) {
-        binding.childRV.layoutManager = GridLayoutManager(context,3)
+        val column = if (context?.let { WindowsUtil.isTablet(it) } == true){
+            5
+        } else{ 3 }
+
+        binding.childRV.layoutManager = GridLayoutManager(context,column)
         val adapter = context?.let { ChildCategoriesBrandAdapter(it, getChildCategory(),this) }
         binding.childRV.adapter=adapter
 

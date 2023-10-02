@@ -56,6 +56,8 @@ class SettingListRVAdapter(private val context: Context,private val itemList: Li
 
                 4 -> { Navigation.findNavController(itemView).navigate(R.id.action_navigation_profile_to_addressFragment) }
 
+                5 -> { Navigation.findNavController(itemView).navigate(R.id.action_navigation_profile_to_creditDebitCardFragment) }
+
                 else -> {
                     // Handle the default case or additional cases
                 }

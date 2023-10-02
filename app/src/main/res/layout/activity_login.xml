@@ -17,7 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="?android:windowBackground"
         android:orientation="vertical"
         tools:context=".activity.LoginActivity">
 
@@ -38,7 +38,6 @@
                     android:text="@string/fashion"
                     android:gravity="center"
                     android:fontFamily="@font/dancing_script_regular"
-                    android:textColor="@color/black"
                     android:textSize="94sp" />
                 <TextView
                     android:layout_width="match_parent"
@@ -60,7 +59,6 @@
                     android:layout_marginTop="@dimen/margin_20"
                     android:text="@string/welcome"
                     android:fontFamily="@font/caprasimo_regular"
-                    android:textColor="@color/black"
                     android:textSize="34sp" />
 
                 <TextView
@@ -84,6 +82,7 @@
                         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:textSize="14sp"
                         android:inputType="textEmailAddress"
                         android:text="@{viewModal.email}"
                         />
@@ -104,6 +103,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
+                        android:textSize="14sp"
                         android:text="@{viewModal.password}"
                         />
 
@@ -118,8 +118,10 @@
                     android:layout_marginEnd="40dp"
                     android:layout_marginTop="40dp"
                     android:gravity="center"
+                    android:textSize="14sp"
+                    android:backgroundTint="@color/button_bg_color"
+                    android:textColor="@color/button_text_color"
                     android:clickable="true"
-                    android:onClick="@{view -> getCredential.getLoginCredential(view,viewModal)}"
                     android:focusable="true"
                     android:text="@string/login" />
 

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="modal"
+            type="com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel" />
+    </data>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/parent"
+        android:background="@drawable/ll_ripple_effect"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:id="@+id/container"
+                android:layout_height="500dp">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/camera_image"
+                    app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
+                    android:elevation="5dp"
+                    android:padding="8dp"
+                    app:product_image="@{modal.productImageUrl}"
+                    />
+
+                <CheckBox
+                    android:id="@+id/starTask"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:button="@null"
+                    android:checked="false"
+                    android:background="@drawable/wishlist_check_box"
+                    app:layout_constraintEnd_toEndOf="@id/container"
+                    app:layout_constraintTop_toTopOf="@id/container"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/margin_10"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Roller Rabbit"
+                android:textSize="@dimen/subheading_text_size"
+                android:text="@{modal.productTitle}"
+                android:layout_marginTop="@dimen/margin_20"
+                android:gravity="center"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Vado Odelle Dress"
+                android:textSize="@dimen/desc_text_size"
+                android:gravity="center"
+                android:text="@{modal.productDesc}"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:hint="$4500"
+                    android:text="@{modal.productPrice}"
+                    android:textSize="@dimen/subheading_text_size_2"
+                    android:fontFamily="@font/caprasimo_regular"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</layout>

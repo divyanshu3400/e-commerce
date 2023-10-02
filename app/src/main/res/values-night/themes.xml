@@ -1,7 +1,56 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<!--    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your light theme here. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor">@color/white</item>-->
+<!--        <item name="colorPrimary">@color/white</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+<!--    </style>-->
+
+    <style name="DayNightAppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/color_bg_1</item>
+        <item name="colorPrimaryDark">@color/color_bg_1</item>
+        <item name="colorAccent">@color/color_main_1</item>
+        <item name="android:textColor">@color/color_text_0</item>
+        <item name="android:textColorPrimary">@color/color_text_0</item>
+        <item name="android:colorControlNormal">@color/color_text_0</item>
+        <item name="android:windowBackground">@color/color_bg_1</item>
+        <item name="android:statusBarColor">@color/black</item>
     </style>
+
+
+    <style name="LightAppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/color_bg_1</item>
+        <item name="colorPrimaryDark">@color/color_bg_1</item>
+        <item name="colorAccent">@color/color_main_1</item>
+        <item name="android:textColor">@color/color_text_0</item>
+        <item name="android:textColorPrimary">@color/color_text_0</item>
+        <item name="android:colorControlNormal">@color/color_text_0</item>
+        <item name="android:windowBackground">@color/color_bg_1</item>
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+
+
+
+    <style name="AppBottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="itemIconTint">@drawable/selector_bottom_nav_item</item>
+        <item name="itemTextColor">@drawable/selector_bottom_nav_item</item>
+        <item name="iconSize">@dimen/bottom_bar_icon_size</item>
+        <item name="checkedIconEnabled">true</item>
+    </style>
+
+    <style name="RadioButtonTheme" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="itemIconTint">@drawable/selector_bottom_nav_item</item>
+        <item name="itemTextColor">@drawable/selector_bottom_nav_item</item>
+        <item name="checkedIconEnabled">true</item>
+    </style>
+
+    <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!-- Customize the outline color when focused -->
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="hintTextColor">@color/white</item>
+        <!-- Add other styling attributes as needed -->
+    </style>
+
 </resources>

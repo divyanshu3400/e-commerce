@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="?android:windowBackground"
         android:orientation="vertical"
         tools:context=".ui.myorders.MyOrdersFragment">
 
@@ -45,35 +45,35 @@
             android:orientation="horizontal">
 
 
+
+
             <RadioButton
                 android:id="@+id/rbtOnGoing"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="@dimen/rbt_height"
-                android:padding="8dp"
-                android:text="@string/on_going"
-                android:button="@null"
-                android:checked="true"
+                android:textSize="14sp"
                 android:gravity="center"
-                android:background="@drawable/rbt_design"
+                android:button="@null"
+                android:background="@drawable/radio_drawable"
+                android:padding="8dp"
+                android:checked="true"
+                android:text="@string/on_going"
                 android:textColor="@color/black"
-                android:layout_marginEnd="@dimen/margin_10"
-                android:textSize="14sp" />
-
+                />
             <RadioButton
                 android:id="@+id/rbtCompleted"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="@dimen/rbt_height"
-                android:padding="8dp"
+                android:textSize="14sp"
                 android:gravity="center"
+                android:button="@null"
+                android:padding="8dp"
+                android:background="@drawable/radio_drawable"
                 android:text="@string/completed"
                 android:textColor="@color/black"
-                android:button="@null"
-                android:background="@drawable/rbt_design"
-                android:layout_marginEnd="@dimen/margin_10"
-                android:textSize="14sp" />
-
+                />
             <RadioButton
                 android:id="@+id/rbtCancelled"
                 android:layout_width="0dp"
@@ -82,7 +82,7 @@
                 android:textSize="14sp"
                 android:gravity="center"
                 android:button="@null"
-                android:background="@drawable/rbt_design"
+                android:background="@drawable/radio_drawable"
                 android:padding="8dp"
                 android:text="@string/cancelled"
                 android:textColor="@color/black"

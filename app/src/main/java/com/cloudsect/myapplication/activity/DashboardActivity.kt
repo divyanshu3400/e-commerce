@@ -1,12 +1,10 @@
 package com.cloudsect.myapplication.activity
 
-import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AutoCompleteTextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -46,15 +44,18 @@ class DashboardActivity : AppCompatActivity(),SuggestionAdapter.OnItemClickListe
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+//        binding.appbar.visibility = View.GONE
+
 
         val navView: BottomNavigationView = binding.navView
         navController = findNavController(R.id.nav_host_fragment_activity_dashboard)
         setBadges(navView)
+//        supportActionBar?.hide()
 
         navView.setupWithNavController(navController)
 
         suggestionDao = RoomDB.getInstance(applicationContext).suggestionDao()
-        apiService = RetrofitClient.create(ApiService::class.java)
+        apiService = RetrofitClient.apiService
 
         searchRepository = SearchRepository(suggestionDao, apiService)
         viewModel = SearchViewModel(searchRepository)
@@ -77,9 +78,11 @@ class DashboardActivity : AppCompatActivity(),SuggestionAdapter.OnItemClickListe
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val query = s.toString()
-                if (query.isEmpty()){ suggestionRecyclerView.visibility= View.GONE }
+                if (query.isEmpty()){ suggestionRecyclerView.visibility= View.GONE
+                    binding.backgroundLl.visibility = View.GONE}
                 else{
                     suggestionRecyclerView.visibility= View.VISIBLE
+                    binding.backgroundLl.visibility = View.VISIBLE
                     suggestionAdapter.updateSuggestions(viewModel.fetchSuggestions(query))
                 }
             }
@@ -104,6 +107,7 @@ class DashboardActivity : AppCompatActivity(),SuggestionAdapter.OnItemClickListe
     override fun performSearch(brandTitle: SuggestionEntity, view: View) {
         autoCompleteTextView.setText(brandTitle.suggestionText)
         suggestionRecyclerView.visibility=View.GONE
+        binding.backgroundLl.visibility = View.GONE
         val bundle = Bundle()
         bundle.putString("brandTitle", autoCompleteTextView.text.toString())
         autoCompleteTextView.setText("")

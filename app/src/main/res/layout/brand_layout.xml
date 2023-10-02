@@ -8,11 +8,13 @@
             type="com.cloudsect.myapplication.ui.home.BrandModel" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:gravity="center"
-        android:layout_margin="@dimen/margin_10"
+        android:layout_margin="5dp"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="100dp"
         >
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -20,10 +22,11 @@
             android:layout_width="match_parent"
             android:scaleType="fitCenter"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:src="@drawable/nike_logo"
             app:brand_image="@{brandModel.brandImage}"
             />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
 
 </layout>

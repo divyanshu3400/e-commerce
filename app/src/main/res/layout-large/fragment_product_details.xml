@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="modal"
+            type="com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:background="?android:windowBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.product_detail.ProductDetailsFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_weight="0.4"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_10"
+                            app:cardBackgroundColor="#2FC6C2C2"
+                            app:cardCornerRadius="@dimen/margin_10"
+                            app:cardElevation="5dp">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="450dp">
+
+                                <androidx.viewpager.widget.ViewPager
+                                    android:id="@+id/viewPager"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    tools:layout_editor_absoluteX="0dp"
+                                    tools:layout_editor_absoluteY="39dp" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <LinearLayout
+                            android:id="@+id/dotsLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:gravity="center"
+                            android:orientation="horizontal" />
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="180dp"
+                            android:layout_height="80dp"
+                            android:orientation="vertical"
+                            app:cardBackgroundColor="@color/black"
+                            app:cardCornerRadius="@dimen/margin_10"
+                            android:layout_marginStart="@dimen/margin_20"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:padding="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:src="@drawable/star" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="start"
+                                        android:textSize="22sp"
+                                        android:layout_marginStart="16dp"
+                                        android:hint="4.9"
+                                        android:text="@{String.valueOf(modal.rating)}"
+                                        android:textColor="@color/button_text_color"
+                                        android:textColorHint="@color/white" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="500"
+                                        android:textSize="22sp"
+                                        android:text="@{String.valueOf(modal.totalReviews)}"
+                                        android:textColor="@color/button_text_color"
+                                        android:textColorHint="@color/button_text_color" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="12dp"
+                                        android:gravity="start"
+                                        android:text="Reviews"
+                                        android:textColor="@color/button_text_color"
+                                        android:textSize="22sp" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_weight="0.6"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:hint="On Ear Headphone"
+                                android:paddingStart="@dimen/margin_15"
+                                android:text="@{modal.productTitle}"
+                                android:textSize="@dimen/subheading_text_size" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:hint="Boat"
+                                android:paddingStart="@dimen/margin_15"
+                                android:text="@{modal.productSecTitle}"
+                                android:textSize="@dimen/subheading_text_size_2" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="165dp"
+                            android:layout_height="60dp"
+                            android:layout_marginEnd="@dimen/margin_15"
+                            android:background="@drawable/search_background">
+
+                            <Button
+                                style="@style/Widget.Material3.Button.IconButton"
+                                android:layout_width="75dp"
+                                android:layout_height="match_parent"
+                                app:icon="@drawable/plus_icon"
+                                app:iconTint="@color/primaryColor"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="start|center"
+                                android:text="4"
+                                android:textSize="22sp" />
+
+                            <Button
+                                style="@style/Widget.Material3.Button.IconButton"
+                                android:layout_width="75dp"
+                                android:layout_height="wrap_content"
+                                app:iconTint="@color/primaryColor"
+                                app:icon="@drawable/minus_svgrepo_com" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="@integer/material_motion_duration_long_1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/caprasimo_regular"
+                            android:gravity="start"
+                            android:paddingStart="@dimen/margin_15"
+                            android:text="@string/description"
+                            android:textSize="@dimen/subheading_text_size"
+                            tools:ignore="RtlSymmetry" />
+                        <Button
+                            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/button_bg_color"
+                            android:text="Add To Cart"
+                            android:textSize="@dimen/desc_text_size"
+                            android:textColor="@color/button_text_color"
+                            app:icon="@drawable/ic_myorders"
+                            app:iconTint="@color/button_text_color"
+                            android:layout_marginEnd="@dimen/margin_10"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:gravity="start"
+                        android:hint="@string/a_shoe_is_an_associate_in_nursing_item_of_footwear_supposed_to_safeguard_and_luxury_the_pedal_extremity_whereas_the_user_is_doing_numerous_activities"
+                        android:paddingStart="@dimen/margin_15"
+                        android:paddingEnd="@dimen/margin_15"
+                        android:text="@{modal.desc}"
+                        android:textColor="@android:color/secondary_text_dark"
+                        android:textSize="@dimen/desc_text_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:fontFamily="@font/caprasimo_regular"
+                        android:gravity="start"
+                        android:paddingStart="@dimen/margin_15"
+                        android:text="@string/size"
+                        android:textSize="@dimen/subheading_text_size"
+                        tools:ignore="RtlSymmetry" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/sizeRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:layout_marginEnd="@dimen/margin_20"
+                        android:orientation="horizontal"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:fontFamily="@font/caprasimo_regular"
+                        android:gravity="start"
+                        android:paddingStart="@dimen/margin_15"
+                        android:text="@string/color"
+                        android:textSize="@dimen/subheading_text_size"
+                        tools:ignore="RtlSymmetry" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/colorRecyclerView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_10"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:padding="4dp"
+                            android:orientation="horizontal" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

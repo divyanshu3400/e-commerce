@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="request_otp">Request OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="resend_otp_in">Resend OtP in:</string>
+</resources>

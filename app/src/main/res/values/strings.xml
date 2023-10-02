@@ -50,4 +50,13 @@
     <string name="google_map_api">AIzaSyBNbR_Bdqi63lrpe0tWIycNXagdrkD-Ixc</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="checkout">Checkout</string>
+    <string name="switch_theme_daynight">Switch Theme(Current DayNight)</string>
+    <string name="switch_theme_light">Switch Theme(Current Light Force Dark)</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="product_details">Product Details</string>
+    <string name="rating_amp_reviews"><![CDATA[Rating & Reviews]]></string>
+    <string name="request_otp">Request OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="resend_otp_in">Resend OtP in:</string>
 </resources>

@@ -18,14 +18,14 @@
             android:layout_height="match_parent"
             android:gravity="center|top"
             android:orientation="vertical"
-            android:background="@color/white"
             tools:context=".ui.personal_detail.PersonalDetailFragment">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardElevation="@dimen/margin_10"
-                app:cardCornerRadius="7dp"
+                app:cardElevation="2dp"
+                app:cardCornerRadius="300dp"
+                app:cardBackgroundColor="#DDDEDD"
                 android:layout_marginTop="8dp"
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +33,7 @@
                     android:layout_height="120dp"
                     >
 
-                    <ImageView
+                    <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/profileImage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -47,6 +47,7 @@
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         app:icon="@drawable/icon_edit"
+                        app:iconTint="@color/primaryColor"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:onClick="@{view -> onItemClickListener.openMedia(view)}"
                         app:layout_constraintEnd_toEndOf="parent" />
@@ -105,26 +106,29 @@
                     <RadioButton
                         android:id="@+id/rbtMale"
                         android:layout_width="100dp"
-                        android:layout_height="35dp"
-                        android:textSize="14sp"
-                        android:layout_marginEnd="@dimen/margin_20"
-                        android:background="@drawable/radio_back"
-                        android:checked="true"
+                        android:layout_height="40dp"
                         android:padding="8dp"
                         android:text="@string/male"
-                        android:textColor="@color/black"
+                        android:checked="true"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:background="@drawable/radio_drawable"
+                        android:layout_marginEnd="@dimen/margin_10"
                         android:onClick="@{view -> onItemClickListener.radioButtonClickEvent(view)}"
-                        />
+                        android:textSize="14sp" />
+
 
                     <RadioButton
                         android:id="@+id/rbtFemale"
                         android:layout_width="100dp"
-                        android:layout_height="35dp"
+                        android:layout_height="40dp"
                         android:padding="8dp"
                         android:text="@string/female"
+                        android:gravity="center"
+                        android:button="@null"
+                        android:background="@drawable/radio_drawable"
                         android:onClick="@{view -> onItemClickListener.radioButtonClickEvent(view)}"
-                        android:textColor="@color/black"
-                        android:background="@drawable/radio_back"
+                        android:checked="false"
                         android:textSize="14sp" />
 
                 </RadioGroup>
@@ -194,12 +198,11 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_20"
                 android:layout_marginTop="@dimen/margin_20"
-                app:cardBackgroundColor="#fff"
                 android:layout_marginEnd="@dimen/margin_20"
                 >
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -208,55 +211,6 @@
                     android:layout_margin="@dimen/margin_20"
                     android:orientation="vertical"
                     >
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:gravity="center"
-                        android:background="@drawable/ll_ripple_effect"
-                        android:focusable="true"
-                        android:layout_height="55dp">
-
-                        <ImageView
-                            android:padding="@dimen/margin_10"
-                            android:layout_width="@dimen/icon_size_big"
-                            android:layout_height="@dimen/icon_size_big"
-                            android:src="@drawable/language_icon"
-                            android:background="@drawable/add_square_svgrepo_com"
-                            android:contentDescription="@string/title_profile"
-                            />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:text="Language"
-                            android:paddingStart="@dimen/margin_10"
-                            android:paddingEnd="@dimen/margin_10"
-                            />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:textSize="16sp"
-                            android:gravity="end"
-                            android:textColor="#74000000"
-                            android:text="English"
-                            android:paddingStart="@dimen/margin_10"
-                            android:paddingEnd="@dimen/margin_10"
-                            />
-
-                        <ImageView
-                            android:layout_width="@dimen/icon_size_small"
-                            android:layout_height="@dimen/icon_size_small"
-                            android:src="@drawable/ic_ios_back"
-                            android:contentDescription="@string/title_profile"
-                            android:layout_gravity="center|end"
-                            />
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:gravity="center"
@@ -288,7 +242,6 @@
                         <androidx.appcompat.widget.SwitchCompat
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_ios_back"
                             android:contentDescription="@string/title_profile"
                             android:layout_gravity="center|end"
                             />
@@ -323,9 +276,9 @@
                             />
 
                         <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/darkmodeSwitch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_ios_back"
                             android:contentDescription="@string/title_profile"
                             android:layout_gravity="center|end"
                             />
@@ -373,7 +326,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -390,16 +343,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@color/black"
+                    android:background="@color/button_bg_color"
                     >
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:textColor="@color/white"
                         android:layout_gravity="start"
                         android:gravity="center"
                         android:textSize="18sp"
+                        android:textColor="@color/button_text_color"
                         android:paddingStart="@dimen/margin_20"
                         android:text="Logout"/>
 

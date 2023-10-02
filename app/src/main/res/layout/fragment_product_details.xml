@@ -11,7 +11,7 @@
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:background="@color/white"
+        android:background="?android:windowBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -148,18 +148,15 @@
                             android:hint="On Ear Headphone"
                             android:paddingStart="@dimen/margin_15"
                             android:text="@{modal.productTitle}"
-                            android:textColor="@color/black"
                             android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:hint="Boat"
                             android:paddingStart="@dimen/margin_15"
+                            android:paddingEnd="@dimen/margin_10"
                             android:text="@{modal.productSecTitle}"
-                            android:textColor="@android:color/secondary_text_dark"
-
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -174,67 +171,27 @@
                             style="@style/Widget.Material3.Button.IconButton"
                             android:layout_width="35dp"
                             android:layout_height="match_parent"
-                            app:icon="@drawable/plus_icon" />
+                            app:icon="@drawable/plus_icon"
+                            app:iconTint="@color/primaryColor"
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="start|center"
                             android:text="4"
-                            android:textColor="@android:color/secondary_text_light"
                             android:textSize="11sp" />
 
                         <Button
                             style="@style/Widget.Material3.Button.IconButton"
                             android:layout_width="35dp"
                             android:layout_height="wrap_content"
+                            app:iconTint="@color/primaryColor"
                             app:icon="@drawable/minus_svgrepo_com" />
 
                     </LinearLayout>
 
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="@integer/material_motion_duration_long_1"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/caprasimo_regular"
-                        android:gravity="start"
-                        android:paddingStart="@dimen/margin_15"
-                        android:text="@string/description"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        tools:ignore="RtlSymmetry" />
-                    <Button
-                        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/black"
-                        android:text="Add To Cart"
-                        android:textColor="@color/white"
-                        app:icon="@drawable/ic_myorders"
-                        app:iconTint="@color/white"
-                        android:layout_marginEnd="@dimen/margin_10"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_15"
-                    android:gravity="start"
-                    android:hint="@string/a_shoe_is_an_associate_in_nursing_item_of_footwear_supposed_to_safeguard_and_luxury_the_pedal_extremity_whereas_the_user_is_doing_numerous_activities"
-                    android:paddingStart="@dimen/margin_15"
-                    android:paddingEnd="@dimen/margin_15"
-                    android:text="@{modal.desc}"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -244,7 +201,6 @@
                     android:gravity="start"
                     android:paddingStart="@dimen/margin_15"
                     android:text="@string/size"
-                    android:textColor="@color/black"
                     android:textSize="18sp"
                     tools:ignore="RtlSymmetry" />
 
@@ -256,6 +212,7 @@
                     android:layout_marginTop="@dimen/margin_10"
                     android:layout_marginEnd="@dimen/margin_20"
                     android:orientation="horizontal"
+                    android:visibility="visible"
                     />
 
                 <TextView
@@ -266,28 +223,109 @@
                     android:gravity="start"
                     android:paddingStart="@dimen/margin_15"
                     android:text="@string/color"
-                    android:textColor="@color/black"
                     android:textSize="18sp"
                     tools:ignore="RtlSymmetry" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/colorRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    >
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/colorRecyclerView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_20"
-                        android:layout_marginTop="@dimen/margin_10"
-                        android:layout_marginEnd="@dimen/margin_20"
-                        android:padding="4dp"
-                        android:orientation="horizontal" />
+                    android:layout_marginStart="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    android:padding="4dp"
+                    android:visibility="visible"
+                    android:orientation="horizontal" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:fontFamily="@font/caprasimo_regular"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/margin_15"
+                    android:text="@string/product_details"
+                    android:textSize="18sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/proDetailRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    android:padding="4dp"
+                    android:visibility="visible"
+                    android:orientation="horizontal" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:fontFamily="@font/caprasimo_regular"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/margin_15"
+                    android:text="@string/rating_amp_reviews"
+                    android:textSize="18sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ratingRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    android:padding="4dp"
+                    android:visibility="visible"
+                    android:orientation="horizontal" />
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            >
+
+            <Button
+                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/btn_yellow"
+                android:text="@string/buy_now"
+                android:textColor="@color/button_text_color"
+                android:textSize="@dimen/desc_text_size"
+                app:iconTint="@color/button_text_color"
+                android:layout_marginStart="@dimen/margin_10"
+                android:layout_marginEnd="@dimen/margin_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/button_bg_color"
+                android:text="Add To Cart"
+                android:textColor="@color/button_text_color"
+                android:textSize="@dimen/desc_text_size"
+                app:icon="@drawable/ic_myorders"
+                app:iconTint="@color/button_text_color"
+                android:layout_marginEnd="@dimen/margin_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </LinearLayout>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buy_now">Buy Now</string>
+    <string name="product_details">Product Details</string>
+    <string name="rating_amp_reviews"><![CDATA[Rating & Reviews]]></string>
+    <string name="request_otp">Request OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="resend_otp_in">Resend OtP in:</string>
+</resources>
