@@ -15,7 +15,7 @@ import com.cloudsect.myapplication.models.UserEmailRequest
 import com.cloudsect.myapplication.view_model.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class LoginActivity : AppCompatActivity(), GetLoginCredential {
+class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     val context: Context = this
 
@@ -25,7 +25,6 @@ class LoginActivity : AppCompatActivity(), GetLoginCredential {
         setContentView(binding.root)
 
         binding.viewModal = LoginViewModel()
-        binding.getCredential = this
         binding.llSignup.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
@@ -34,17 +33,4 @@ class LoginActivity : AppCompatActivity(), GetLoginCredential {
 
     }
 
-
-    override fun getLoginCredential(view: View, userEmailRequest: UserEmailRequest) {
-        Snackbar
-            .make(
-                view, "Logged in as " + userEmailRequest.email,
-                Snackbar.LENGTH_SHORT
-            )
-            .show()
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, (1000).toLong())    }
 }
