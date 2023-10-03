@@ -1,71 +1,97 @@
 package com.cloudsect.myapplication.ui.categories
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.databinding.FragmentCategoriesBinding
 import com.cloudsect.myapplication.ui.categories.adapter.CategoriesBrandAdapter
 import com.cloudsect.myapplication.ui.categories.adapter.ChildCategoriesBrandAdapter
-import com.cloudsect.myapplication.util.CategoryLists.Companion.getChildCategory
-import com.cloudsect.myapplication.util.CategoryLists.Companion.getParentCategory
+import com.cloudsect.myapplication.ui.categories.model.CategoryResponse
+import com.cloudsect.myapplication.ui.categories.model.CategoryViewModel
+import com.cloudsect.myapplication.ui.categories.model.ChildCatReq
+import com.cloudsect.myapplication.ui.categories.model.ChildCatRes
 import com.cloudsect.myapplication.util.WindowsUtil
 import com.google.android.material.snackbar.Snackbar
 
 class CategoriesFragment : Fragment(),
-    CategoriesBrandAdapter.OnItemListener ,ChildCategoriesBrandAdapter.OnItemListener{
+    CategoriesBrandAdapter.OnItemListener, ChildCategoriesBrandAdapter.OnItemListener {
     private var _binding: FragmentCategoriesBinding? = null
+    private lateinit var viewModel: CategoryViewModel
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCategoriesBinding.inflate(inflater,container, false)
-
+        _binding = FragmentCategoriesBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[CategoryViewModel::class.java]
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setBrandAdapter()
-        setChildCategoryAdapter(1,view)
+
+        viewModel.getNavItems()
+            .observe(viewLifecycleOwner) { categoryResponse ->
+                setBrandAdapter(categoryResponse)
+            }
     }
 
-    private fun setBrandAdapter() {
-        val column = if (context?.let { WindowsUtil.isTablet(it) } == true){
-            2
-        } else{ 1 }
+    private fun setBrandAdapter(categoryResponse: List<CategoryResponse>?) {
+        if (categoryResponse != null) {
+            if (categoryResponse.isNotEmpty()) {
+                val column = if (context?.let { WindowsUtil.isTablet(it) } == true) { 2 }
+                else { 1 }
+                Log.d("TAG", "categoryResponse: $categoryResponse")
+                binding.parentRV.layoutManager = GridLayoutManager(
+                    context, column,
+                    LinearLayoutManager.VERTICAL, false
+                )
+                val adapter = context?.let { CategoriesBrandAdapter(it, categoryResponse, this) }
+                binding.parentRV.adapter = adapter
+                binding.progressHorizontal?.visibility=View.GONE
 
-        binding.parentRV.layoutManager = GridLayoutManager(context,column,
-            LinearLayoutManager.VERTICAL,false)
-        val adapter = context?.let { CategoriesBrandAdapter(it,getParentCategory(),this) }
-        binding.parentRV.adapter=adapter
+                setChildCategoryAdapter(categoryResponse[0].nav_id)
+            }
+        }
     }
 
-    override fun setChildCategoryAdapter(adapterPos: Int,view: View) {
-        updateChildRV(adapterPos,view)
+    override fun setChildCategoryAdapter(id: Int) {
+        val childCatReq = ChildCatReq(id)
+        viewModel.getNavChildItems(childCatReq)
+            .observe(viewLifecycleOwner) { childCategoryResponse ->
+                setChildBrandAdapter(childCategoryResponse)
+            }
     }
 
-    private fun updateChildRV(adapterPos: Int, view: View) {
-        val column = if (context?.let { WindowsUtil.isTablet(it) } == true){
-            5
-        } else{ 3 }
 
-        binding.childRV.layoutManager = GridLayoutManager(context,column)
-        val adapter = context?.let { ChildCategoriesBrandAdapter(it, getChildCategory(),this) }
-        binding.childRV.adapter=adapter
+    private fun setChildBrandAdapter(childCategoryResponse: List<ChildCatRes>?) {
+        if (childCategoryResponse != null) {
+            if (childCategoryResponse.isNotEmpty()) {
+                val column = if (context?.let { WindowsUtil.isTablet(it) } == true) { 5 }
+                else { 3 }
+
+                binding.childRV.layoutManager = GridLayoutManager(context, column)
+                val adapter =
+                    context?.let { ChildCategoriesBrandAdapter(it, childCategoryResponse, this) }
+                binding.childRV.adapter = adapter
+                binding.progressHorizontal?.visibility=View.GONE
+            }
+        }
+
 
     }
 
-    override fun getProduct(brandTitle: String, brandId: Int, view: View) {
+    override fun getProduct(brandId: Int) {
         Snackbar
             .make(
-                view, "Clicked: $brandTitle",
+                requireView(), "Clicked: $brandId",
                 Snackbar.LENGTH_SHORT
             )
             .show()

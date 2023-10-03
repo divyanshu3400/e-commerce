@@ -15,9 +15,8 @@ import android.widget.AutoCompleteTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cloudsect.myapplication.R
-import com.cloudsect.myapplication.adapter.SuggestionAdapter
 import com.cloudsect.myapplication.retrofit.RetrofitClient
-import com.cloudsect.myapplication.search.ApiService
+import com.cloudsect.myapplication.retrofit.ApiService
 import com.cloudsect.myapplication.search.RoomDB
 import com.cloudsect.myapplication.search.SearchRepository
 import com.cloudsect.myapplication.search.SearchViewModel

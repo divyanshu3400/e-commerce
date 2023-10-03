@@ -9,14 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.databinding.FragmentHomeBinding
-import com.cloudsect.myapplication.retrofit.RetrofitClient
-import com.cloudsect.myapplication.search.ApiService
 import com.cloudsect.myapplication.ui.home.adapter.BrandLogoRVAdapter
 import com.cloudsect.myapplication.ui.home.adapter.NewArrivalRVAdapter
 import com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel
 import com.cloudsect.myapplication.util.ImageSliderString
 import com.cloudsect.myapplication.util.WindowsUtil
-import retrofit2.Call
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

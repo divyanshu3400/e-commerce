@@ -4,18 +4,17 @@ package com.cloudsect.myapplication.ui.categories.adapter
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.databinding.CategoriesBrandLayoutBinding
-import com.cloudsect.myapplication.ui.home.BrandModel
+import com.cloudsect.myapplication.ui.categories.model.CategoryResponse
 import com.cloudsect.myapplication.ui.home.BrandModel.Companion.loadImage
 
 class CategoriesBrandAdapter(
     private val context: Context,
-    private val itemList: List<BrandModel>,
+    private val itemList: List<CategoryResponse>,
     private val onItemListener: OnItemListener
 ) : RecyclerView.Adapter<CategoriesBrandAdapter.BrandViewHolder>() {
 
@@ -41,11 +40,12 @@ class CategoriesBrandAdapter(
     inner class BrandViewHolder(
         private val binding: CategoriesBrandLayoutBinding,
         private val onItemListener: OnItemListener,
-    ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+    ) : RecyclerView.ViewHolder(binding.root) {
         private  var adapterPos=0
-        fun bind(brandModel: BrandModel, position: Int) {
+        fun bind(categoryResponse: CategoryResponse, position: Int) {
             adapterPos=position
-            binding.brandModel = brandModel
+            Log.d("TAG", "bind: ${categoryResponse.nav_name}")
+            binding.categoryResponse = categoryResponse
             if (selectedPosition == position) {
                 binding.brandTitle.setTextColor(ContextCompat.getColor(context, R.color.yellow))
                 binding.parent.setBackgroundColor(ContextCompat.getColor(context, R.color.forest_green))
@@ -57,19 +57,18 @@ class CategoriesBrandAdapter(
                 binding.parent.setBackgroundColor(ContextCompat.getColor(context,android.R.color.transparent))
 
             }
-            loadImage(binding.brandImageVIew, brandModel.brandImage)
+            loadImage(binding.brandImageVIew, categoryResponse.nav_logo)
             binding.executePendingBindings()
-            binding.parent.setOnClickListener(this)
+            binding.parent.setOnClickListener{
+                selectedPosition = adapterPosition
+                notifyDataSetChanged()
+                onItemListener.setChildCategoryAdapter(categoryResponse.nav_id)
+            }
         }
 
-        override fun onClick(view: View) {
-            selectedPosition = adapterPosition
-            notifyDataSetChanged()
-            onItemListener.setChildCategoryAdapter(adapterPos, view)
-        }
     }
 
     interface OnItemListener {
-        fun setChildCategoryAdapter(adapterPos: Int, view: View)
+        fun setChildCategoryAdapter(id: Int)
     }
 }

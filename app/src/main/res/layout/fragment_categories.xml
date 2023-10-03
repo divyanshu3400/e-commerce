@@ -14,6 +14,13 @@
         android:background="?android:windowBackground"
         tools:context=".ui.categories.CategoriesFragment">
 
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress_horizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            />
+
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_weight="0.3"

@@ -20,8 +20,8 @@ class SignupRepository {
                 call: Call<MessageResponse?>,
                 response: Response<MessageResponse?>
             ) {
-                Log.d("TAG", "onFailure: ${response.body()}")
-
+                Log.d("TAG", "onFailure: ${response.code()}")
+                Log.d("TAG", "onFailure: ${response.body()?.message}")
                 if (response.isSuccessful) {
                     messageResponseLiveData.value = response.body()
                 }

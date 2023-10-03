@@ -39,6 +39,14 @@ class SharedPreferencesManager(private val context: Context) {
         val defaultValue =""
         return sharedPreferences.getString(key, defaultValue) ?: defaultValue
     }
+    fun saveBool(key: String, value: Boolean) {
+        sharedPreferences.edit().putBoolean(key, value).apply()
+    }
+
+    fun getBool(key: String): Boolean {
+        val defaultValue =false
+        return sharedPreferences.getBoolean(key, defaultValue)
+    }
 
     fun clearSharedPreferences() {
         sharedPreferences.edit().clear().apply()

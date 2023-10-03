@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="getCredential"
             type="com.cloudsect.myapplication.click_listener.GetLoginCredential" />
@@ -121,7 +121,7 @@
                 app:layout_constraintStart_toStartOf="@id/emailTextInp"
                 app:layout_constraintEnd_toEndOf="@id/emailTextInp"
                 app:layout_constraintBottom_toTopOf="@id/requestOtp"
-                app:layout_constraintVertical_bias="0.3"
+                app:layout_constraintVertical_bias="0.1"
                 android:visibility="gone"
                 style="@style/CustomTextInputLayout"
                 >
@@ -130,7 +130,9 @@
                     style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:inputType="textPassword" />
+                    android:id="@+id/otpEt"
+                    android:inputType="text"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,6 +156,7 @@
                     android:text="@string/resend_otp_in"
                     android:paddingStart="@dimen/margin_30"
                     android:paddingEnd="1dp"
+                    android:textSize="16sp"
                     />
 
                 <TextView
@@ -161,7 +164,10 @@
                     android:layout_weight="0.3"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="30 Sec"
+                    android:id="@+id/timer"
+                    android:textColor="@color/red"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
                     />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -186,13 +192,39 @@
                 app:layout_constraintStart_toStartOf="@id/container"
                 android:layout_marginBottom="@dimen/margin_40"
                 />
+            <Button
+                android:id="@+id/verifyOtp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginStart="@dimen/margin_40"
+                android:layout_marginTop="@dimen/margin_20"
+                android:layout_marginEnd="@dimen/margin_40"
+                android:backgroundTint="@color/button_bg_color"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/verify_otp"
+                android:textColor="@color/button_text_color"
+                android:textSize="14sp"
+                android:visibility="gone"
+                android:onClick="@{(view)-> getCredential.verifyCredential(view)}"
+                app:layout_constraintBottom_toBottomOf="@id/container"
+                app:layout_constraintEnd_toEndOf="@id/container"
+                app:layout_constraintStart_toStartOf="@id/container"
+                android:layout_marginBottom="@dimen/margin_40"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <include layout="@layout/loader"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/loader"
             android:visibility="gone"
-            />
+            >
+            <include layout="@layout/loader"
+                />
 
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -16,7 +16,7 @@ import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.adapter.SuggestionAdapter
 import com.cloudsect.myapplication.databinding.ActivityDashboardBinding
 import com.cloudsect.myapplication.retrofit.RetrofitClient
-import com.cloudsect.myapplication.search.ApiService
+import com.cloudsect.myapplication.retrofit.ApiService
 import com.cloudsect.myapplication.search.RoomDB
 import com.cloudsect.myapplication.search.SearchRepository
 import com.cloudsect.myapplication.search.SearchViewModel

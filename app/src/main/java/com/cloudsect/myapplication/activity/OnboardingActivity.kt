@@ -35,7 +35,7 @@ class OnboardingActivity : AppCompatActivity(), ClickListeners {
     }
 
     override fun onNextButtonClicked(view: View) {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, SignupActivity::class.java)
         startActivity(intent)
         finish()
     }

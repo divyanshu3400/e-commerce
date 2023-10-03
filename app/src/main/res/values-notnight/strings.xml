@@ -2,5 +2,6 @@
 <resources>
     <string name="request_otp">Request OTP</string>
     <string name="enter_otp">Enter OTP</string>
-    <string name="resend_otp_in">Resend OtP in:</string>
+    <string name="resend_otp_in">Resend OTP in:</string>
+    <string name="verify_otp">Verify OTP</string>
 </resources>

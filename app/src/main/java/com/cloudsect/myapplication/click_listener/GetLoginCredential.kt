@@ -4,4 +4,5 @@ import android.view.View
 
 interface GetLoginCredential {
     fun getLoginCredential(view: View)
+    fun verifyCredential(view: View)
 }
