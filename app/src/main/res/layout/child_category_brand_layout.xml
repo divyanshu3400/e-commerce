@@ -32,7 +32,7 @@
                 android:scaleType="fitCenter"
                 android:layout_height="70dp"
                 android:src="@drawable/nike_logo"
-                app:brand_image="@{categoryResponse.pcat_logos}"
+                app:child_cat_image="@{categoryResponse.pcat_logos}"
                 />
 
             <TextView

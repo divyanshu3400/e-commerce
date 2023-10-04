@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.databinding.CategoriesBrandLayoutBinding
 import com.cloudsect.myapplication.ui.categories.model.CategoryResponse
-import com.cloudsect.myapplication.ui.home.BrandModel.Companion.loadImage
+import com.cloudsect.myapplication.ui.categories.model.CategoryResponse.Companion.loadImage
+
 
 class CategoriesBrandAdapter(
     private val context: Context,

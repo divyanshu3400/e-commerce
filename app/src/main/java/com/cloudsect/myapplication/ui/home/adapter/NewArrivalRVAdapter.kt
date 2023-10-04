@@ -9,9 +9,9 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.databinding.NewArrivalsLayoutBinding
-import com.cloudsect.myapplication.ui.wishlist.model.WishlistProductModel
+import com.cloudsect.myapplication.ui.categories.model.ProductResponse
 
-class NewArrivalRVAdapter(private val context: Context,private val itemList: List<WishlistProductModel>):
+class NewArrivalRVAdapter(private val context: Context, private val itemList: ArrayList<ProductResponse>):
     RecyclerView.Adapter<NewArrivalRVAdapter.ProductViewHolder>() {
 
 
@@ -33,7 +33,7 @@ class NewArrivalRVAdapter(private val context: Context,private val itemList: Lis
     inner class ProductViewHolder(val binding: NewArrivalsLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(modal: WishlistProductModel){
+        fun bind(modal: ProductResponse){
             binding.modal = modal
             binding.executePendingBindings()
             val bundle = Bundle()

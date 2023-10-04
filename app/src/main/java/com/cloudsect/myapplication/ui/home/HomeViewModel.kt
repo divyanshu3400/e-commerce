@@ -1,13 +1,15 @@
 package com.cloudsect.myapplication.ui.home
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+
+    private var categoryRepository: HomeRepository = HomeRepository()
+
+    fun getBrands(): LiveData<List<BrandModel>> {
+        return categoryRepository.getBrand()
     }
-    val text: LiveData<String> = _text
 }

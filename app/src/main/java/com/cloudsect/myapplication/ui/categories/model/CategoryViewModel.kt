@@ -11,7 +11,14 @@ class CategoryViewModel(application: Application):AndroidViewModel(application) 
 
     fun getNavItems(): LiveData<List<CategoryResponse>> {
         return categoryRepository.getNavItemList()
-    }    fun getNavChildItems(childCatReq: ChildCatReq): LiveData<List<ChildCatRes>> {
+    }
+    fun getNavChildItems(childCatReq: ChildCatReq): LiveData<List<ChildCatRes>> {
         return categoryRepository.getNavChildItemList(childCatReq)
     }
+
+    fun getParentProducts(parentProductReq: Int): LiveData<List<ProductResponse>> {
+        return categoryRepository.getParentProduct(parentProductReq)
+    }
+
+
 }

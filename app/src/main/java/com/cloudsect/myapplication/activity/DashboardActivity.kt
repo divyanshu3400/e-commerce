@@ -1,118 +1,119 @@
 package com.cloudsect.myapplication.activity
 
+import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
-import android.widget.AutoCompleteTextView
+import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.cloudsect.myapplication.R
-import com.cloudsect.myapplication.adapter.SuggestionAdapter
 import com.cloudsect.myapplication.databinding.ActivityDashboardBinding
+import com.cloudsect.myapplication.models.MessageResponse
+import com.cloudsect.myapplication.models.UserDataResponse
+import com.cloudsect.myapplication.models.UserIdModel
 import com.cloudsect.myapplication.retrofit.RetrofitClient
-import com.cloudsect.myapplication.retrofit.ApiService
-import com.cloudsect.myapplication.search.RoomDB
-import com.cloudsect.myapplication.search.SearchRepository
-import com.cloudsect.myapplication.search.SearchViewModel
-import com.cloudsect.myapplication.search.SuggestionDao
-import com.cloudsect.myapplication.search.SuggestionEntity
+import com.cloudsect.myapplication.util.Constants
+import com.cloudsect.myapplication.util.SharedPreferencesManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.launch
-class DashboardActivity : AppCompatActivity(),SuggestionAdapter.OnItemClickListener {
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-    private lateinit var suggestionDao: SuggestionDao
-    private lateinit var apiService: ApiService
+class DashboardActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityDashboardBinding
-    private lateinit var autoCompleteTextView: AutoCompleteTextView
-    private lateinit var suggestionRecyclerView: RecyclerView
-    private lateinit var viewModel: SearchViewModel
-    private lateinit var searchRepository: SearchRepository
     private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var viewModel: DashboardViewModel
+    private val context :Context =this
 
-    private val suggestionAdapter: SuggestionAdapter by lazy {
-        SuggestionAdapter(emptyList(),this)
-    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
-//        binding.appbar.visibility = View.GONE
+        setSupportActionBar(binding.appBarMain.toolbar)
 
+        viewModel = ViewModelProvider(this)[DashboardViewModel::class.java]
 
-        val navView: BottomNavigationView = binding.navView
+        val navView: BottomNavigationView = binding.appBarMain.contentMain.bottomNavView
         navController = findNavController(R.id.nav_host_fragment_activity_dashboard)
+
+        appBarConfiguration = AppBarConfiguration(setOf(
+                R.id.navigation_home,R.id.navigation_category,
+                R.id.navigation_profile,R.id.navigation_cart),
+            binding.drawerLayout
+        )
+
         setBadges(navView)
-//        supportActionBar?.hide()
 
         navView.setupWithNavController(navController)
+            setupActionBarWithNavController(navController,binding.drawerLayout)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        suggestionDao = RoomDB.getInstance(applicationContext).suggestionDao()
-        apiService = RetrofitClient.apiService
+        loadProfile()
+        binding.btnLogout?.setOnClickListener {
+            val sharedPreferencesManager = SharedPreferencesManager(context)
+            val userIdModel = UserIdModel(sharedPreferencesManager.getInt(Constants.USER_ID))
+            val token = "Token ${sharedPreferencesManager.getString(Constants.TOKEN)}"
 
-        searchRepository = SearchRepository(suggestionDao, apiService)
-        viewModel = SearchViewModel(searchRepository)
+            logout(token,userIdModel) }
+    }
 
-        autoCompleteTextView = binding.autoCompleteTextView
-        suggestionRecyclerView = binding.suggestionRecyclerView
+    private fun loadProfile() {
+        val sharedPreferencesManager = SharedPreferencesManager(context)
+        val userIdModel = UserIdModel(sharedPreferencesManager.getInt(Constants.USER_ID))
+        val token = "Token ${sharedPreferencesManager.getString(Constants.TOKEN)}"
 
-        suggestionRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
-        suggestionRecyclerView.adapter = suggestionAdapter
+        viewModel.getUserData(token,userIdModel).observe(this){
+            usersData ->
+                findViewById<TextView>(R.id.headerUserName).text = usersData.userData.name
+                findViewById<TextView>(R.id.headerUserEmail).text = usersData.userData.email
 
-        insertSuggestion(SuggestionEntity(1,"Electronics"))
-        insertSuggestion(SuggestionEntity(2, "Fashion"))
-        insertSuggestion(SuggestionEntity(3,"Home Appliances"))
-        insertSuggestion(SuggestionEntity(4,"Sports"))
-        insertSuggestion(SuggestionEntity(5,"Kids"))
-        insertSuggestion(SuggestionEntity(6,"Books"))
-        insertSuggestion(SuggestionEntity(7,"Groceries"))
-
-        autoCompleteTextView.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val query = s.toString()
-                if (query.isEmpty()){ suggestionRecyclerView.visibility= View.GONE
-                    binding.backgroundLl.visibility = View.GONE}
-                else{
-                    suggestionRecyclerView.visibility= View.VISIBLE
-                    binding.backgroundLl.visibility = View.VISIBLE
-                    suggestionAdapter.updateSuggestions(viewModel.fetchSuggestions(query))
-                }
-            }
-            override fun afterTextChanged(s: Editable?) {}
-
-        })
+        }
     }
 
     private fun setBadges(navView: BottomNavigationView) {
         val cartBadge = navView.getOrCreateBadge(R.id.navigation_cart)
-        val notifBadge = navView.getOrCreateBadge(R.id.navigation_notifications)
-        notifBadge.isVisible = true
+        val notifyBadge = navView.getOrCreateBadge(R.id.navigation_notifications)
+        notifyBadge.isVisible = true
         cartBadge.isVisible = true
         cartBadge.number = 3
-        notifBadge.number = 10
+        notifyBadge.number = 10
     }
-    private fun insertSuggestion(suggestion: SuggestionEntity) {
-        lifecycleScope.launch {
-            suggestionDao.insertSuggestion(suggestion)
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_activity_dashboard)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-    override fun performSearch(brandTitle: SuggestionEntity, view: View) {
-        autoCompleteTextView.setText(brandTitle.suggestionText)
-        suggestionRecyclerView.visibility=View.GONE
-        binding.backgroundLl.visibility = View.GONE
-        val bundle = Bundle()
-        bundle.putString("brandTitle", autoCompleteTextView.text.toString())
-        autoCompleteTextView.setText("")
 
-        navController.navigate(R.id.gridProductListFragment, bundle)
-        Snackbar.make(view, "Showing Result for ${brandTitle.suggestionText} ", Snackbar.LENGTH_SHORT).show()
+
+    fun logout(token:String,userIdModel: UserIdModel){
+        val call: Call<MessageResponse> = RetrofitClient.apiService.logout(token,userIdModel)
+        call.enqueue(object : Callback<MessageResponse> {
+            override fun onResponse(
+                call: Call<MessageResponse>,
+                response: Response<MessageResponse>
+            ) {
+                Log.d("TAG", "getUserDatas: ${response.code()}")
+
+                if (response.isSuccessful) {
+                    Log.d("TAG", "getUserDatas: ${response.body()}")
+                }
+            }
+
+            override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+                Log.d("TAG", "getUserDatas: $t")
+
+            }
+        })
     }
+
 }

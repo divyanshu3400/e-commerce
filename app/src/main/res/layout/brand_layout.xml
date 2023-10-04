@@ -9,11 +9,12 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:gravity="center"
         android:layout_margin="5dp"
-        app:cardElevation="3dp"
+        app:cardBackgroundColor="#20000000"
+        app:cardElevation="0dp"
         app:cardCornerRadius="100dp"
         >
 
@@ -23,7 +24,6 @@
             android:scaleType="fitCenter"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:src="@drawable/nike_logo"
             app:brand_image="@{brandModel.brandImage}"
             />
 
