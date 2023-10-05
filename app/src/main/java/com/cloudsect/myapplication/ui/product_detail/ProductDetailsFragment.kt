@@ -53,14 +53,7 @@ class ProductDetailsFragment : Fragment(), SizeAdapter.OnItemListener, ColorAdap
     private fun setImageSlider(images: List<ProductImages>) {
         val imageSlider =
             context?.let { ImageSliderString(it, binding.viewPager, binding.dotsLayout,false) }
-        val imageUrls = arrayOf(
-            "https://nurserynisarga.in/wp-content/uploads/2021/06/ruby.jpg",
-            "https://nurserynisarga.in/wp-content/uploads/2019/09/1800-1600-1.jpg",
-            "https://5.imimg.com/data5/TR/AY/CJ/SELLER-91578059/rubber-plant-500x500.jpg",
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTldJHqebezI5SU3IMcbnczeCivbNoLZ16XBA&usqp=CAU",
-            "https://www.inntinn.in/cdn/shop/products/rubber-plant-three-in-one-inntinn-in-1.jpg?v=1675507335"
-        )
-        imageSlider?.setImageUrls(imageUrls)
+        imageSlider?.setImageUrls(images)
     }
 
     private fun setProductDetail(): WishlistProductModel {

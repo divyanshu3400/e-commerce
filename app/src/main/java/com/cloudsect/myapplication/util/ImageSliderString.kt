@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.cloudsect.myapplication.R
 import com.cloudsect.myapplication.activity.ViewImageActivity
+import com.cloudsect.myapplication.ui.product_detail.model.ProductImages
 
 class ImageSliderString(
     private val context: Context,
@@ -24,18 +25,15 @@ class ImageSliderString(
     private val isAutoslide:Boolean
 
 ) {
-    private var imageUrls: Array<String>? = null
+    private var imageUrls: List<ProductImages>? = null
     private var dots: Array<ImageView?>? = null
     private var currentPage = 0
 
     private val slideInterval = 2000
     private val handler = Handler(Looper.getMainLooper())
 
-    fun createPagerAdapter(): PagerAdapter {
-        return ImageSliderAdapter(context, imageUrls ?: arrayOf())
-    }
 
-    fun setImageUrls(imageUrls: Array<String>) {
+    fun setImageUrls(imageUrls: List<ProductImages>) {
         this.imageUrls = imageUrls
         setupImageSlider()
     }
@@ -93,7 +91,7 @@ class ImageSliderString(
 
     private class ImageSliderAdapter(
         private val context: Context,
-        private val imageUrls: Array<String>
+        private val imageUrls: List<ProductImages>
     ) : PagerAdapter() {
 
         override fun getCount(): Int {
@@ -112,7 +110,7 @@ class ImageSliderString(
 
             imageView.setOnClickListener {
                 val intent = Intent(context,ViewImageActivity::class.java)
-                intent.putExtra("images",imageUrls)
+                intent.putExtra("images",imageUrls as ArrayList)
                 context.startActivity(intent)
 
             }
