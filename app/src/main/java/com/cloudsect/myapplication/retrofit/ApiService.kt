@@ -5,6 +5,7 @@ import com.cloudsect.myapplication.models.UserDataResponse
 import com.cloudsect.myapplication.models.UserEmailRequest
 import com.cloudsect.myapplication.models.UserIdModel
 import com.cloudsect.myapplication.models.VerifyEmailOtpResponse
+import com.cloudsect.myapplication.models.WishlistReq
 import com.cloudsect.myapplication.search.SuggestionEntity
 import com.cloudsect.myapplication.ui.categories.model.CategoryResponse
 import com.cloudsect.myapplication.ui.categories.model.ChildCatReq
@@ -12,6 +13,8 @@ import com.cloudsect.myapplication.ui.categories.model.ChildCatRes
 import com.cloudsect.myapplication.ui.categories.model.ParentProductReq
 import com.cloudsect.myapplication.ui.categories.model.ProductResponse
 import com.cloudsect.myapplication.ui.home.BrandModel
+import com.cloudsect.myapplication.ui.product_detail.model.ProductDetailReq
+import com.cloudsect.myapplication.ui.product_detail.model.ProductDetailResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -43,7 +46,14 @@ interface ApiService {
 
     @POST("user-profile/")
     fun getUserData(@Header("Authorization") token: String, @Body userIdModel: UserIdModel): Call<UserDataResponse>
+
     @POST("logout/")
     fun logout(@Header("Authorization") token: String, @Body userIdModel: UserIdModel): Call<MessageResponse>
+    @POST("add-to-wishlist/")
+    fun addToWishlist(@Header("Authorization") token: String, @Body wishlistReq: WishlistReq): Call<MessageResponse>
+    @POST("remove-from-wishlist/")
+    fun removeFromWishlist(@Header("Authorization") token: String, @Body wishlistReq: WishlistReq): Call<MessageResponse>
+    @POST("product_details/")
+    fun productDetail(@Body productDetailReq: ProductDetailReq): Call<ProductDetailResponse>
 
 }

@@ -67,10 +67,12 @@ class CategoriesFragment : Fragment(),
     }
 
     override fun setChildCategoryAdapter(id: Int) {
+        binding.llLoader?.visibility = View.VISIBLE
         val childCatReq = ChildCatReq(id)
         viewModel.getNavChildItems(childCatReq)
             .observe(viewLifecycleOwner) { childCategoryResponse ->
                 setChildBrandAdapter(childCategoryResponse)
+                binding.llLoader?.visibility =View.GONE
             }
     }
 

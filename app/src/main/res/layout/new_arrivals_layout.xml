@@ -22,24 +22,24 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:id="@+id/container"
-                android:layout_height="200dp">
+                android:layout_height="250dp">
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:adjustViewBounds="true"
                     android:src="@drawable/camera_image"
                     app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
                     android:padding="8dp"
-                    android:elevation="3dp"
+                    android:elevation="0dp"
                     app:product_image="@{modal.images.get(0).image}"
                     />
 
                 <CheckBox
-                    android:id="@+id/starTask"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:id="@+id/addToWishlist"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:button="@null"
                     android:checked="false"
                     android:background="@drawable/wishlist_check_box"

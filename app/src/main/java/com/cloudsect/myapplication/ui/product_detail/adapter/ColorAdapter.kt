@@ -38,8 +38,8 @@ class ColorAdapter(private val context: Context,
         ,View.OnClickListener{
         private var color =""
         fun bind(model: ColorModel,position: Int) {
-            color = model.colorName
-            binding.cvChild.setCardBackgroundColor(Color.parseColor(model.colorHex))
+            color = model.color_name
+            binding.cvChild.setCardBackgroundColor(Color.parseColor(model.color_hex))
             if (selectedPosition == position) {
                 binding.parent.background = ContextCompat.getDrawable(context,R.drawable.selected_color_background)
             }

@@ -9,7 +9,7 @@
             type="String" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.grid_product_list.GridProductListFragment">
@@ -43,6 +43,16 @@
                 android:layout_margin="@dimen/margin_10" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/llLoader"
+            android:visibility="gone"
+            >
+            <include layout="@layout/loader"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>
